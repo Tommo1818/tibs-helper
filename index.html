@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIBS Revision Hub — EMATM0049</title>
+  <title>TIBS Revision Hub — EMATM0049 (University of Bristol)</title>
   <style>
     :root, [data-theme="dark"] {
       --bg: #0f172a;
@@ -45,7 +45,7 @@
       color: var(--text);
       line-height: 1.55;
       padding: 16px;
-      max-width: 1320px;
+      max-width: 1360px;
       margin: 0 auto;
     }
     @media (min-width: 768px) {
@@ -96,7 +96,7 @@
     h2 { font-size: 1.15rem; font-weight: 700; }
     h3 { font-size: 1rem; font-weight: 700; }
     .text-sm { font-size: 0.875rem; }
-    .text-xs { font-size: 0.78rem; }
+    .text-xs { font-size: 0.79rem; }
     .muted { color: var(--muted); }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
     .uppercase { text-transform: uppercase; letter-spacing: 0.05em; }
@@ -113,6 +113,9 @@
       background-color: var(--surface);
       color: var(--text);
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       transition: all 0.15s ease;
     }
     button:hover { border-color: var(--primary); }
@@ -121,11 +124,23 @@
       color: var(--primary-fg) !important;
       border-color: var(--primary) !important;
     }
+    .icon-svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      flex-shrink: 0;
+    }
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       padding: 3px 9px;
       border-radius: 6px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -135,7 +150,7 @@
     .badge-rose { background: rgba(244, 63, 94, 0.2); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.4); }
     .badge-purple { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.4); }
 
-    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.81rem; }
     th, td { border: 1px solid var(--border); padding: 9px 11px; text-align: left; vertical-align: top; }
     th { background-color: var(--surface); font-weight: 700; }
 
@@ -164,53 +179,88 @@
     <div class="flex-between">
       <div>
         <div class="flex-row">
-          <span class="badge badge-primary">University of Bristol • MSc Data Science</span>
+          <span class="badge badge-primary">University of Bristol &bull; MSc Data Science</span>
           <span class="badge badge-emerald">EMATM0049 (TIBS)</span>
-          <span class="badge badge-amber">Exam: Themes 0–4</span>
+          <span class="badge badge-amber">Mid-Term Exam: Themes 0&ndash;4</span>
         </div>
-        <h1 style="margin-top: 6px;">Technology, Innovation, Business &amp; Society — Interactive Revision Hub</h1>
+        <h1 style="margin-top: 6px;">Technology, Innovation, Business &amp; Society &mdash; Interactive Revision Hub</h1>
         <p class="text-xs muted" style="margin-top: 3px;">
-          Curated interactive diagrams, case study sorters, and official Level 7 marking rubrics for the mid-term examination.
+          Complete synthesis of lecture notes, Talis reading lists, interactive visualisations, case study sorters, and official Level 7 marking rubrics.
         </p>
       </div>
 
       <div class="flex-row">
-        <button onclick="toggleTheme()" id="theme-btn" title="Toggle Theme">☀️ / 🌙 Mode</button>
+        <button onclick="toggleTheme()" id="theme-btn" title="Switch Dark / Light Mode">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <span id="theme-btn-label">Light / Dark Mode</span>
+        </button>
       </div>
     </div>
   </header>
 
   <!-- NAVIGATION TABS -->
   <nav class="flex-row" style="margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
-    <button onclick="switchTab('theme1')" id="tab-theme1" class="tab-active">🌊 1. Theme 1: Tech &amp; Innovation</button>
-    <button onclick="switchTab('theme2')" id="tab-theme2">🚀 2. Theme 2: Beyond Innovation</button>
-    <button onclick="switchTab('theme3')" id="tab-theme3">🏛️ 3. Theme 3: Organising &amp; Finance</button>
-    <button onclick="switchTab('theme4')" id="tab-theme4">⚖️ 4. Theme 4: Legal, GDPR &amp; AI Act</button>
-    <button onclick="switchTab('practice')" id="tab-practice">✍️ 5. Mock Exams &amp; Rubrics</button>
+    <button onclick="switchTab('theme1')" id="tab-theme1" class="tab-active">
+      <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      <span>1. Theme 0 &amp; 1: Tech &amp; Innovation</span>
+    </button>
+    <button onclick="switchTab('theme2')" id="tab-theme2">
+      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+      <span>2. Theme 2: Beyond Innovation</span>
+    </button>
+    <button onclick="switchTab('theme3')" id="tab-theme3">
+      <svg class="icon-svg" viewBox="0 0 24 24"><line x1="3" y1="22" x2="21" y2="22"></line><line x1="6" y1="18" x2="6" y2="11"></line><line x1="10" y1="18" x2="10" y2="11"></line><line x1="14" y1="18" x2="14" y2="11"></line><line x1="18" y1="18" x2="18" y2="11"></line><polygon points="12 2 20 7 4 7"></polygon></svg>
+      <span>3. Theme 3: Organising &amp; Finance</span>
+    </button>
+    <button onclick="switchTab('theme4')" id="tab-theme4">
+      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <span>4. Theme 4: Legal, GDPR &amp; AI Act</span>
+    </button>
+    <button onclick="switchTab('practice')" id="tab-practice">
+      <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+      <span>5. Mock Exams &amp; Rubrics</span>
+    </button>
   </nav>
 
   <!-- ========================================================= -->
-  <!-- TAB 1: THEME 1 — TECHNOLOGY & INNOVATION                  -->
+  <!-- TAB 1: THEME 0 & THEME 1 — TECHNOLOGY & INNOVATION        -->
   <!-- ========================================================= -->
   <section id="view-theme1" class="space-y">
     <div class="card">
       <div class="flex-between" style="padding-bottom: 10px; border-bottom: 1px solid var(--border);">
         <div>
-          <span class="badge badge-primary">Week 2 • Theme 1 (With Theme 0 Preamble)</span>
-          <h2 style="margin-top: 4px;">Macro Paradigms (Carlota Perez) vs. Firm-Level Disruption (Clayton Christensen)</h2>
+          <span class="badge badge-primary">Week 1 &amp; 2 &bull; Theme 0 &amp; Theme 1</span>
+          <h2 style="margin-top: 4px;">Epistemic Vigilance (Theme 0), Macro Paradigms (Perez) &amp; Firm-Level Disruption (Christensen)</h2>
         </div>
-        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t1');">Practice Theme 1 Exam Prompt →</button>
+        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t1');">
+          <span>Practice Theme 1 Exam Prompts</span>
+          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
       </div>
-      <p class="text-sm muted" style="margin-top: 10px;">
-        <strong>Core Comparison (10 Marks in Exam):</strong> Perez and Christensen both examine technological displacement, but at contrasting scales. <strong>Perez</strong> models 50–60 year <em>macroeconomic techno-economic paradigms</em> driven by financial speculation bubbles and socio-institutional restructuring. <strong>Christensen</strong> models <em>microeconomic firm-level competition</em> where rational incumbents overshoot customer needs and lose to low-end or new-market entrants.
-      </p>
+      <div class="grid-2 text-xs" style="margin-top: 12px;">
+        <div class="subcard">
+          <div class="bold text-sm" style="color: var(--primary);">Theme 0 Preamble: "Don't Believe The Hype!" (Epistemic Vigilance)</div>
+          <p class="muted" style="margin-top: 4px;">
+            Vendor-driven narratives frame every technological shift (AI, blockchain, quantum) as inevitable and unprecedented. Level 7 analysis requires a <strong>mental toolbox of competing analytical lenses</strong>: always ask <em>who benefits from the hype</em>, inspect historical precedents, and separate technical feasibility from commercial and institutional reality.
+          </p>
+        </div>
+        <div class="subcard">
+          <div class="bold text-sm" style="color: var(--emerald);">Core Theme 1 Contrast (Mandatory for 10/10 in Part B)</div>
+          <p class="muted" style="margin-top: 4px;">
+            <strong>Carlota Perez</strong> operates at the <strong>macroeconomic / historical scale</strong> (50&ndash;60 year techno-economic surges driven by financial speculation bubbles and socio-institutional resets). <strong>Clayton Christensen</strong> operates at the <strong>microeconomic / firm-level scale</strong> (how rational incumbents overshoot customer demand and lose to low-end or new-market entrants).
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- Perez Interactive -->
     <div class="card space-y">
       <div>
-        <h3>1. Carlota Perez's 5 Great Surges &amp; The Two-Phase Wave</h3>
-        <p class="text-xs muted">Click any of the 5 historical surges or click the wave diagram below to inspect the structural transition from Financial Capital to Production Capital.</p>
+        <h3>1. Carlota Perez (2002): Technological Revolutions &amp; The 5 Great Surges</h3>
+        <p class="text-xs muted">Select any of the 5 historical surges or click a phase on the wave diagram to inspect the structural shift from Financial Capital to Production Capital.</p>
       </div>
 
       <div class="grid-5" id="surge-buttons"></div>
@@ -218,27 +268,29 @@
 
       <div class="subcard">
         <div class="text-xs bold uppercase muted" style="margin-bottom: 8px;">
-          Anatomy of a Techno-Economic Surge (Click a Phase to Inspect Rubric Details)
+          Anatomy of a 50&ndash;60 Year Techno-Economic Surge (Click Any Phase Region)
         </div>
         <div class="grid-2" style="align-items: center;">
-          <svg viewBox="0 0 600 220" style="width: 100%; height: auto; user-select: none;">
-            <line x1="40" y1="190" x2="580" y2="190" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5" />
-            <line x1="250" y1="20" x2="250" y2="190" stroke="#f43f5e" stroke-dasharray="5,5" stroke-width="2" />
-            <line x1="315" y1="20" x2="315" y2="190" stroke="#f43f5e" stroke-dasharray="5,5" stroke-width="2" />
+          <svg viewBox="0 0 620 230" style="width: 100%; height: auto; user-select: none;">
+            <line x1="40" y1="195" x2="595" y2="195" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
+            <line x1="40" y1="20" x2="40" y2="195" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
+            <line x1="250" y1="20" x2="250" y2="195" stroke="#f43f5e" stroke-dasharray="5,5" stroke-width="2" />
+            <line x1="325" y1="20" x2="325" y2="195" stroke="#f43f5e" stroke-dasharray="5,5" stroke-width="2" />
 
-            <rect x="40" y="20" width="210" height="170" fill="#3b82f6" fill-opacity="0.1" style="cursor:pointer" onclick="selectPerezPhase('installation')" />
-            <rect x="250" y="20" width="65" height="170" fill="#f43f5e" fill-opacity="0.16" style="cursor:pointer" onclick="selectPerezPhase('turning')" />
-            <rect x="315" y="20" width="265" height="170" fill="#10b981" fill-opacity="0.1" style="cursor:pointer" onclick="selectPerezPhase('deployment')" />
+            <rect x="40" y="20" width="210" height="175" fill="#3b82f6" fill-opacity="0.1" style="cursor:pointer" onclick="selectPerezPhase('installation')" />
+            <rect x="250" y="20" width="75" height="175" fill="#f43f5e" fill-opacity="0.16" style="cursor:pointer" onclick="selectPerezPhase('turning')" />
+            <rect x="325" y="20" width="270" height="175" fill="#10b981" fill-opacity="0.1" style="cursor:pointer" onclick="selectPerezPhase('deployment')" />
 
-            <path d="M 45 180 C 120 175, 190 130, 250 100 C 275 88, 290 95, 315 82 C 380 40, 460 32, 570 28" fill="none" stroke="currentColor" stroke-width="3.5" />
-            <path d="M 130 155 Q 215 25, 250 100" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="4,3" />
-            <text x="155" y="50" fill="#f43f5e" font-size="12" font-weight="bold">Financial Bubble Frenzy</text>
+            <path d="M 45 182 C 120 176, 190 132, 250 102 C 278 88, 298 96, 325 82 C 390 42, 470 32, 585 28" fill="none" stroke="currentColor" stroke-width="3.5" />
+            <path d="M 130 158 Q 215 24, 250 102" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="4,3" />
+            <text x="140" y="48" fill="#f43f5e" font-size="11.5" font-weight="bold">Speculative Bubble (Frenzy)</text>
 
-            <text x="85" y="175" fill="#60a5fa" font-size="13" font-weight="bold" style="cursor:pointer" onclick="selectPerezPhase('installation')">1. INSTALLATION</text>
-            <text x="256" y="145" fill="#fb7185" font-size="12" font-weight="bold" style="cursor:pointer" onclick="selectPerezPhase('turning')">2. CRASH</text>
-            <text x="395" y="175" fill="#34d399" font-size="13" font-weight="bold" style="cursor:pointer" onclick="selectPerezPhase('deployment')">3. DEPLOYMENT</text>
-            <text x="52" y="38" fill="currentColor" opacity="0.75" font-size="12">Irruption → Frenzy (Financial Capital)</text>
-            <text x="330" y="38" fill="currentColor" opacity="0.75" font-size="12">Synergy / Golden Age → Maturity (Production Capital)</text>
+            <text x="72" y="180" fill="#60a5fa" font-size="12.5" font-weight="bold" style="cursor:pointer" onclick="selectPerezPhase('installation')">1. INSTALLATION</text>
+            <text x="256" y="148" fill="#fb7185" font-size="11.5" font-weight="bold" style="cursor:pointer" onclick="selectPerezPhase('turning')">2. TURNING PT</text>
+            <text x="405" y="180" fill="#34d399" font-size="12.5" font-weight="bold" style="cursor:pointer" onclick="selectPerezPhase('deployment')">3. DEPLOYMENT</text>
+            <text x="50" y="36" fill="currentColor" opacity="0.8" font-size="11">Irruption &rarr; Frenzy (Financial Capital)</text>
+            <text x="336" y="36" fill="currentColor" opacity="0.8" font-size="11">Synergy (Golden Age) &rarr; Maturity (Production Capital)</text>
+            <text x="515" y="214" fill="currentColor" opacity="0.65" font-size="11">50&ndash;60 Years &rarr;</text>
           </svg>
           <div id="perez-phase-box" class="card text-xs space-y-sm"></div>
         </div>
@@ -248,75 +300,95 @@
     <!-- Christensen Interactive -->
     <div class="card space-y">
       <div>
-        <h3>2. Clayton Christensen's Disruptive Innovation Trajectories</h3>
-        <p class="text-xs muted">Click the trajectory buttons below to isolate incumbent overshooting and entrant disruption.</p>
+        <h3>2. Clayton Christensen (1997): The Innovator's Dilemma &amp; Empirical Cases</h3>
+        <p class="text-xs muted">Filter the performance trajectories below and review Christensen's empirical evidence (Disk Drives, Minimill Steel) and autonomous spin-off prescription.</p>
       </div>
 
-      <div class="grid-2" style="align-items: center;">
+      <div class="grid-2" style="align-items: start;">
         <div class="subcard">
           <div class="flex-row" style="margin-bottom: 10px;">
-            <button onclick="setChristensenHighlight('all')">Show All</button>
-            <button onclick="setChristensenHighlight('sustaining')" style="border-color:#3b82f6;">1. Sustaining Path</button>
-            <button onclick="setChristensenHighlight('disruptive')" style="border-color:#f59e0b;">2. Disruptive Path</button>
-            <button onclick="setChristensenHighlight('dilemma')" style="border-color:#f43f5e;">3. Mainstream Hijack</button>
+            <button onclick="setChristensenHighlight('all')" id="cbtn-all" class="btn-primary">Show All</button>
+            <button onclick="setChristensenHighlight('sustaining')" id="cbtn-sustaining">1. Sustaining Path</button>
+            <button onclick="setChristensenHighlight('disruptive')" id="cbtn-disruptive">2. Disruptive Path</button>
+            <button onclick="setChristensenHighlight('dilemma')" id="cbtn-dilemma">3. Mainstream Capture</button>
           </div>
-          <svg viewBox="0 0 600 225" style="width: 100%; height: auto; user-select: none;">
-            <line x1="50" y1="195" x2="570" y2="195" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
-            <line x1="50" y1="20" x2="50" y2="195" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
-            <text x="515" y="214" fill="currentColor" opacity="0.7" font-size="12">Time →</text>
-            <text x="60" y="32" fill="currentColor" opacity="0.7" font-size="12">↑ Performance</text>
+          <svg viewBox="0 0 600 235" style="width: 100%; height: auto; user-select: none;">
+            <line x1="50" y1="200" x2="575" y2="200" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
+            <line x1="50" y1="20" x2="50" y2="200" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
+            <text x="520" y="220" fill="currentColor" opacity="0.7" font-size="11.5">Time &rarr;</text>
+            <text x="60" y="32" fill="currentColor" opacity="0.7" font-size="11.5">&uarr; Product Performance</text>
 
-            <polygon points="50,150 560,110 560,55 50,95" fill="currentColor" fill-opacity="0.08" />
-            <line x1="50" y1="122" x2="560" y2="82" stroke="currentColor" stroke-opacity="0.45" stroke-dasharray="4,4" />
-            <text x="410" y="50" fill="currentColor" opacity="0.65" font-size="12">High-End Demand</text>
-            <text x="410" y="96" fill="currentColor" opacity="0.85" font-size="12" font-weight="bold">Mainstream Utility</text>
-            <text x="410" y="128" fill="currentColor" opacity="0.65" font-size="12">Low-End Demand</text>
+            <polygon points="50,155 565,112 565,55 50,98" fill="currentColor" fill-opacity="0.08" />
+            <line x1="50" y1="126" x2="565" y2="83" stroke="currentColor" stroke-opacity="0.45" stroke-dasharray="4,4" />
+            <text x="400" y="50" fill="currentColor" opacity="0.65" font-size="11">High-End Customer Need</text>
+            <text x="400" y="96" fill="currentColor" opacity="0.85" font-size="11.5" font-weight="bold">Mainstream Utility Band</text>
+            <text x="400" y="132" fill="currentColor" opacity="0.65" font-size="11">Low-End Customer Need</text>
 
             <g id="svg-sustaining">
-              <line x1="70" y1="135" x2="500" y2="25" stroke="#3b82f6" stroke-width="3.5" />
-              <text x="175" y="60" fill="#60a5fa" font-size="12" font-weight="bold">Incumbent Sustaining Innovation</text>
+              <line x1="70" y1="140" x2="505" y2="24" stroke="#3b82f6" stroke-width="3.5" />
+              <text x="155" y="58" fill="#60a5fa" font-size="12" font-weight="bold">Incumbent Sustaining Trajectory (Overshoots Demand)</text>
             </g>
             <g id="svg-disruptive">
-              <line x1="130" y1="188" x2="545" y2="75" stroke="#f59e0b" stroke-width="3.5" />
-              <text x="235" y="175" fill="#fbbf24" font-size="12" font-weight="bold">Disruptive Entrant (Low-End / New Market)</text>
+              <line x1="125" y1="192" x2="550" y2="76" stroke="#f59e0b" stroke-width="3.5" />
+              <text x="220" y="182" fill="#fbbf24" font-size="12" font-weight="bold">Disruptive Entrant Trajectory (Low-End / New Market)</text>
             </g>
             <g id="svg-dilemma">
-              <circle cx="480" cy="90" r="8" fill="#f43f5e" />
-              <text x="345" y="152" fill="#fb7185" font-size="12" font-weight="bold">Mainstream Captured!</text>
-              <line x1="440" y1="140" x2="473" y2="97" stroke="#f43f5e" stroke-width="1.5" />
+              <circle cx="485" cy="90" r="8" fill="#f43f5e" />
+              <text x="335" y="154" fill="#fb7185" font-size="12" font-weight="bold">Mainstream Volume Captured!</text>
+              <line x1="440" y1="142" x2="478" y2="97" stroke="#f43f5e" stroke-width="1.5" />
             </g>
           </svg>
         </div>
 
         <div class="subcard text-xs space-y-sm">
-          <div class="bold text-sm">Christensen's Core Rubric Points (10 Marks)</div>
-          <p><strong>1. Sustaining vs. Disruptive (3m):</strong> Sustaining improves performance along dimensions valued by mainstream customers. Disruptive starts inferior on traditional metrics, cheaper/simpler, establishing a <em>low-end foothold</em> (overserved users) or <em>new-market foothold</em> (non-consumers).</p>
-          <p><strong>2. Why Rational Incumbents Fail (2m):</strong> Resource allocation rationally chases high-margin products for existing premium customers, leaving the low end undefended.</p>
-          <p><strong>3. Upward Trajectory (2m):</strong> Entrants iterate until their quality satisfies mainstream needs, taking market volume from below.</p>
-          <p><strong>4. Contrast with Perez (3m):</strong> Christensen focuses on <em>firm-level micro competition</em>; Perez focuses on <em>macroeconomic 50-year surges and financial capital bubbles</em>.</p>
+          <div class="bold text-sm">Christensen's Core Mechanisms &amp; Canonical Examples</div>
+          <ul class="clean-list">
+            <li><strong>Sustaining vs. Disruptive (3m):</strong> Sustaining innovation improves performance along metrics valued by mainstream customers. Disruptive innovation starts with <em>inferior traditional performance</em>, lower gross margins, and simpler/smaller form factors, establishing either a <strong>low-end foothold</strong> (overserved price-sensitive buyers) or a <strong>new-market foothold</strong> (turning non-consumers into consumers).</li>
+            <li><strong>Performance Oversupply &amp; Rational Failure (2m):</strong> Technological supply progresses faster than customer absorption capacity. Well-managed incumbents fail <em>because</em> they listen to their best, highest-margin customers and rational resource-allocation processes starve low-margin disruptive products.</li>
+            <li><strong>Canonical Case 1 &mdash; Hard Disk Drives:</strong> 14-inch drives (mainframes) &rarr; 8-inch (minicomputers) &rarr; 5.25-inch (desktop PCs) &rarr; 3.5-inch (laptops). Each generation was initially dismissed by incumbent engineers for having lower capacity, before improving rapidly to capture the tier above.</li>
+            <li><strong>Canonical Case 2 &mdash; Minimill Steel (Nucor vs. US Steel):</strong> Minimills entered via cheap, low-margin concrete reinforcing bar (rebar). Integrated steelmakers gladly ceded rebar to focus on high-margin automotive sheet steel &mdash; until minimills improved metallurgy and moved upmarket into structural beams and sheet steel.</li>
+            <li><strong>Christensen's Prescription:</strong> An incumbent can rarely commercialise a disruptive technology inside its core unit; it must <strong>spin off an autonomous organisation</strong> whose cost structure is tailored to earn profits at low margins and small market sizes.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- Critics -->
+    <!-- Critics & Birkinshaw Matrix -->
     <div class="card space-y">
-      <h3>3. Level 7 Academic Critiques of Disruption Theory</h3>
+      <h3>3. Level 7 Academic Critiques &amp; Julian Birkinshaw's Strategic Response Matrix</h3>
       <div class="grid-2 text-xs">
-        <div class="subcard">
-          <div class="bold text-sm">Julian Birkinshaw — Incumbent Resilience &amp; 4 Strategies</div>
-          <p class="muted" style="margin-top:4px;">Disruption is rarely rapid, incumbents are not blind, and incumbent failure is not inevitable. Established firms hold moats (scale, brand, regulatory licences) and fight back via: (1) Disrupt the disruptor, (2) Co-opt/acquire them, (3) Retreat to high-margin niches, or (4) Diversify.</p>
+        <div class="subcard space-y-sm">
+          <div class="bold text-sm">Julian Birkinshaw &mdash; The 3 Myths of Disruption &amp; 2&times;2 Matrix</div>
+          <p class="muted">
+            Birkinshaw refutes three pervasive Silicon Valley myths: <strong>Myth 1 ("Every sector is under threat"):</strong> The Global 500 turnover rate has remained stable at ~10&ndash;12 companies/year since the 1970s; disruption clusters in TMT &amp; retail while asset-heavy/regulated sectors (pharma, aerospace, banking) have deep moats. <strong>Myth 2 ("Disruption happens quickly"):</strong> Real transitions (EVs, cloud, ecommerce) take 20&ndash;30 years. <strong>Myth 3 ("Incumbents cannot adapt"):</strong> Incumbents deploy a 2&times;2 Offence/Defence Matrix:
+          </p>
+          <table>
+            <thead>
+              <tr><th>Posture</th><th>Existing Market</th><th>New / Adjacent Market</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Defensive</strong></td>
+                <td><strong>Retrench:</strong> Focus on high-margin loyal segments where the firm holds an unassailable moat.</td>
+                <td><strong>Move Away:</strong> Exit commoditised low-margin segments and reallocate capital to new industries.</td>
+              </tr>
+              <tr>
+                <td><strong>Offensive</strong></td>
+                <td><strong>Double Down:</strong> Aggressively upgrade core technology and customer experience to neutralise challengers.</td>
+                <td><strong>Fight Back (Co-opt / Spin-In):</strong> Acquire the challenger, partner, or launch a competing disruptive business model.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="subcard">
-          <div class="bold text-sm">Jill Lepore &amp; Michael Weeks — Methodological Flaws</div>
-          <p class="muted" style="margin-top:4px;"><strong>Lepore (2014):</strong> Highlights hand-picked survivorship bias in Christensen’s cases (many cited disruptors later collapsed while incumbents adapted). <strong>Weeks (2015):</strong> Notes disruption theory is circular and fails to distinguish between technological vs. business-model innovation.</p>
-        </div>
-        <div class="subcard">
-          <div class="bold text-sm">Haydn Shaughnessy — Ecosystems &amp; The iPhone Anomaly</div>
-          <p class="muted" style="margin-top:4px;">Christensen famously predicted the Apple iPhone would fail because it was an expensive, high-end sustaining device against Nokia. He missed how <strong>platform ecosystems (App Store)</strong> create value across the top and bottom of the market simultaneously.</p>
-        </div>
-        <div class="subcard">
-          <div class="bold text-sm">David Edgerton (Shock of the Old) &amp; Joseph Schumpeter</div>
-          <p class="muted" style="margin-top:4px;"><strong>Edgerton:</strong> Critiques "innovation-centric" bias; society relies far more on humble <em>technologies-in-use</em> and maintenance (corrugated iron, sewing machines) than frontier novelties. <strong>Schumpeter:</strong> Coined <em>Creative Destruction</em> — capitalism incessantly revolutionises from within.</p>
+
+        <div class="subcard space-y-sm">
+          <div class="bold text-sm">Lepore, Shaughnessy, Weeks, Henderson &amp; Clark, and Edgerton</div>
+          <ul class="clean-list">
+            <li><strong>Jill Lepore (2014, <em>The New Yorker</em>):</strong> Critiques disruption as a quasi-religious ideology replacing "progress". Exposes <strong>hand-picked survivorship bias</strong> (e.g., Seagate survived and dominated disk drives; Bucyrus Erie survived in excavators) and warns against panic-driven <em>"auto-disruption"</em> (destroying viable institutions out of fear).</li>
+            <li><strong>Haydn Shaughnessy &amp; Michael Weeks (2015):</strong> Expose the <strong>falsifiability / tautology trap</strong> (disruption is defined post-hoc by whether the incumbent lost) and the <strong>Apple iPhone anomaly</strong> &mdash; Christensen predicted in 2007 the iPhone would fail as a high-end sustaining device against Nokia, missing how <em>platform ecosystems (iOS App Store)</em> disrupt from the top down.</li>
+            <li><strong>Henderson &amp; Clark (1990):</strong> Distinguish <strong>modular innovation</strong> (changing components) from <strong>architectural innovation</strong> (reconfiguring how existing components link together, which breaks an incumbent's internal communication channels).</li>
+            <li><strong>David Edgerton (2006, <em>The Shock of the Old</em>):</strong> Critiques <em>innovation-centric bias</em> &mdash; global welfare depends far more on humble <strong>technologies-in-use and maintenance</strong> (corrugated iron, shipping containers, bicycles) than hyped novelties. Since most R&amp;D ideas fail, good R&amp;D governance requires <strong>terminating unviable projects early</strong>.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -329,56 +401,59 @@
     <div class="card">
       <div class="flex-between" style="padding-bottom: 10px; border-bottom: 1px solid var(--border);">
         <div>
-          <span class="badge badge-primary">Week 3 • Theme 2</span>
-          <h2 style="margin-top: 4px;">Diffusion (Rogers vs. Moore) &amp; Execution (Govindarajan &amp; Trimble)</h2>
+          <span class="badge badge-primary">Week 3 &bull; Theme 2</span>
+          <h2 style="margin-top: 4px;">Diffusion (Rogers vs. Moore) &amp; Corporate Execution (Govindarajan &amp; Trimble)</h2>
         </div>
-        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t2q1');">Practice Theme 2 Exam Prompts →</button>
+        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t2q1');">
+          <span>Practice Theme 2 Exam Prompts</span>
+          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
       </div>
       <p class="text-sm muted" style="margin-top: 10px;">
-        <strong>Core Concept:</strong> Research turns money into ideas; commercial innovation turns ideas back into money. Theme 2 examines external market adoption (<strong>Everett Rogers</strong> vs. <strong>Geoffrey Moore</strong>) and internal corporate execution (<strong>Govindarajan &amp; Trimble</strong>).
+        <strong>Core Theme 2 Premise:</strong> Research turns money into ideas; commercial innovation turns ideas back into money. Theme 2 addresses the two post-invention bottlenecks: <strong>external market diffusion</strong> (Everett Rogers vs. Geoffrey Moore) and <strong>internal organisational execution</strong> (Vijay Govindarajan &amp; Chris Trimble).
       </p>
     </div>
 
     <!-- Rogers vs Moore -->
     <div class="card space-y">
-      <h3>1. Rogers' Diffusion Curve vs. Geoffrey Moore's High-Tech Chasm</h3>
+      <h3>1. Everett Rogers' Diffusion of Innovations (1962) vs. Geoffrey Moore's Crossing the Chasm (1991)</h3>
       <div class="grid-2">
         <div class="subcard">
           <div class="flex-between" style="margin-bottom: 6px;">
-            <span class="text-xs bold uppercase muted">Click Any Adopter Category</span>
-            <span class="badge badge-rose">⚡ The Chasm = 16% Mark</span>
+            <span class="text-xs bold uppercase muted">Interactive Adopter Bell Curve (Click Any Segment)</span>
+            <span class="badge badge-rose">Chasm = 16% Cumulative Mark</span>
           </div>
-          <svg viewBox="0 0 520 190" style="width: 100%; height: auto; user-select: none;">
+          <svg viewBox="0 0 530 195" style="width: 100%; height: auto; user-select: none;">
             <path d="M 20 155 Q 45 150, 65 130 L 65 155 Z" fill="#6366f1" fill-opacity="0.4" stroke="#6366f1" stroke-width="2" style="cursor:pointer" onclick="selectAdopter('innovators')" />
             <path d="M 68 128 Q 110 80, 150 50 L 150 155 L 68 155 Z" fill="#3b82f6" fill-opacity="0.4" stroke="#3b82f6" stroke-width="2" style="cursor:pointer" onclick="selectAdopter('early_adopters')" />
-            <rect x="153" y="20" width="26" height="135" fill="#f43f5e" fill-opacity="0.28" style="cursor:pointer" onclick="selectAdopter('chasm')" />
-            <text x="166" y="90" fill="#fb7185" font-size="12" font-weight="bold" text-anchor="middle" transform="rotate(-90 166 90)" style="cursor:pointer" onclick="selectAdopter('chasm')">THE CHASM</text>
+            <rect x="153" y="20" width="26" height="135" fill="#f43f5e" fill-opacity="0.3" style="cursor:pointer" onclick="selectAdopter('chasm')" />
+            <text x="166" y="90" fill="#fb7185" font-size="11.5" font-weight="bold" text-anchor="middle" transform="rotate(-90 166 90)" style="cursor:pointer" onclick="selectAdopter('chasm')">THE CHASM</text>
             <path d="M 182 45 Q 225 15, 285 18 L 285 155 L 182 155 Z" fill="#10b981" fill-opacity="0.4" stroke="#10b981" stroke-width="2" style="cursor:pointer" onclick="selectAdopter('early_majority')" />
             <path d="M 288 18 Q 348 20, 405 90 L 405 155 L 288 155 Z" fill="#f59e0b" fill-opacity="0.4" stroke="#f59e0b" stroke-width="2" style="cursor:pointer" onclick="selectAdopter('late_majority')" />
-            <path d="M 408 93 Q 450 143, 500 153 L 500 155 L 408 155 Z" fill="#64748b" fill-opacity="0.4" stroke="#64748b" stroke-width="2" style="cursor:pointer" onclick="selectAdopter('laggards')" />
-            <text x="42" y="174" fill="currentColor" font-size="11" text-anchor="middle">2.5%</text>
-            <text x="110" y="174" fill="currentColor" font-size="11" text-anchor="middle">13.5% Visionaries</text>
-            <text x="235" y="174" fill="currentColor" font-size="11" text-anchor="middle">34% Pragmatists</text>
-            <text x="346" y="174" fill="currentColor" font-size="11" text-anchor="middle">34% Conservatives</text>
-            <text x="455" y="174" fill="currentColor" font-size="11" text-anchor="middle">16%</text>
+            <path d="M 408 93 Q 450 143, 505 153 L 505 155 L 408 155 Z" fill="#64748b" fill-opacity="0.4" stroke="#64748b" stroke-width="2" style="cursor:pointer" onclick="selectAdopter('laggards')" />
+            <text x="42" y="174" fill="currentColor" font-size="10.5" text-anchor="middle">2.5% Techies</text>
+            <text x="110" y="174" fill="currentColor" font-size="10.5" text-anchor="middle">13.5% Visionaries</text>
+            <text x="235" y="174" fill="currentColor" font-size="10.5" text-anchor="middle">34% Pragmatists</text>
+            <text x="346" y="174" fill="currentColor" font-size="10.5" text-anchor="middle">34% Conservatives</text>
+            <text x="460" y="174" fill="currentColor" font-size="10.5" text-anchor="middle">16% Sceptics</text>
           </svg>
           <div id="adopter-detail" class="card text-xs" style="margin-top: 8px;"></div>
         </div>
 
         <div class="subcard space-y-sm">
           <div class="flex-between">
-            <span class="text-xs bold uppercase muted">Rogers' 5 Perceived Attributes Simulator</span>
+            <span class="text-xs bold uppercase muted">Rogers' 5 Perceived Attributes &amp; S-Curve Simulator</span>
             <span id="adoption-score-badge" class="badge badge-emerald">Fast Viral Diffusion</span>
           </div>
           <p class="text-xs muted">
-            <strong>4 Elements (2m):</strong> Innovation, Communication channels, Time, Social system. Adjust the attributes below to reshape the cumulative S-Curve:
+            <strong>Rogers' 4 Elements (2m):</strong> (1) An innovation, (2) communicated through channels, (3) over time, (4) among a social system. Move the sliders to test how the 5 perceived attributes reshape the cumulative S-Curve:
           </p>
           <div class="space-y-sm text-xs">
-            <div class="flex-between"><span>1. Relative Advantage (+)</span><input type="range" id="attr-rel" min="1" max="10" value="8" oninput="updateSCurve()" style="width:160px;" /><span id="val-rel" class="mono">8</span></div>
-            <div class="flex-between"><span>2. Compatibility (+)</span><input type="range" id="attr-comp" min="1" max="10" value="7" oninput="updateSCurve()" style="width:160px;" /><span id="val-comp" class="mono">7</span></div>
-            <div class="flex-between"><span style="color:var(--rose);">3. Complexity (– Barrier)</span><input type="range" id="attr-cplx" min="1" max="10" value="3" oninput="updateSCurve()" style="width:160px;" /><span id="val-cplx" class="mono">3</span></div>
-            <div class="flex-between"><span>4. Trialability (+)</span><input type="range" id="attr-trial" min="1" max="10" value="7" oninput="updateSCurve()" style="width:160px;" /><span id="val-trial" class="mono">7</span></div>
-            <div class="flex-between"><span>5. Observability (+)</span><input type="range" id="attr-obs" min="1" max="10" value="8" oninput="updateSCurve()" style="width:160px;" /><span id="val-obs" class="mono">8</span></div>
+            <div class="flex-between"><label for="attr-rel">1. Relative Advantage (+)</label><input type="range" id="attr-rel" min="1" max="10" value="8" oninput="updateSCurve()" style="width:160px;" /><span id="val-rel" class="mono">8</span></div>
+            <div class="flex-between"><label for="attr-comp">2. Compatibility (+)</label><input type="range" id="attr-comp" min="1" max="10" value="7" oninput="updateSCurve()" style="width:160px;" /><span id="val-comp" class="mono">7</span></div>
+            <div class="flex-between"><label for="attr-cplx" style="color:var(--rose);">3. Complexity (&ndash; Inverse Barrier)</label><input type="range" id="attr-cplx" min="1" max="10" value="3" oninput="updateSCurve()" style="width:160px;" /><span id="val-cplx" class="mono">3</span></div>
+            <div class="flex-between"><label for="attr-trial">4. Trialability (+)</label><input type="range" id="attr-trial" min="1" max="10" value="7" oninput="updateSCurve()" style="width:160px;" /><span id="val-trial" class="mono">7</span></div>
+            <div class="flex-between"><label for="attr-obs">5. Observability (+)</label><input type="range" id="attr-obs" min="1" max="10" value="8" oninput="updateSCurve()" style="width:160px;" /><span id="val-obs" class="mono">8</span></div>
           </div>
           <div class="card" style="padding: 10px;">
             <svg viewBox="0 0 400 88" style="width: 100%; height: auto;">
@@ -386,8 +461,11 @@
               <line x1="30" y1="10" x2="30" y2="75" stroke="currentColor" stroke-opacity="0.25" />
               <path id="s-curve-path" d="M 30 73 C 140 73, 180 12, 370 12" fill="none" stroke="#10b981" stroke-width="3" />
               <circle id="critical-mass-dot" cx="155" cy="48" r="5" fill="#f59e0b" />
-              <text id="critical-mass-label" x="165" y="52" fill="#fbbf24" font-size="11" font-weight="bold">Critical Mass (10–20%)</text>
+              <text id="critical-mass-label" x="165" y="52" fill="#fbbf24" font-size="11" font-weight="bold">Critical Mass (10&ndash;20%)</text>
             </svg>
+          </div>
+          <div class="text-xs muted">
+            <strong>Distinction Bonus Points (Official Rubric):</strong> Cite <em>opinion leaders</em>, <em>homophilous vs. heterophilous interpersonal networks</em> (mass media creates awareness; interpersonal peers drive persuasion), <strong>re-invention</strong> (users modifying an innovation during adoption), and <strong>Debi Andrus's critique</strong> of Moore (that the chasm lacks empirical verification and can become a self-fulfilling marketing metaphor).
           </div>
         </div>
       </div>
@@ -395,23 +473,23 @@
 
     <!-- Govindarajan Bank ML Sorter -->
     <div class="card space-y">
-      <h3>2. Govindarajan &amp; Trimble: Retail Bank ML Pre-Approval Case Sorter</h3>
+      <h3>2. Govindarajan &amp; Trimble (2010): Performance Engine vs. Dedicated Team &amp; Bank ML Sorter</h3>
       <p class="text-xs muted">
-        <strong>Official Blackboard Prompt (Theme 2 Q2):</strong> A retail bank has a prototype ML model that pre-approves SME loans in minutes rather than weeks. Sort the 6 bank capabilities into <strong>Shared Staff (Performance Engine)</strong> or <strong>Dedicated Team</strong>!
+        <strong>Official Blackboard Prompt (Theme 2 Q2):</strong> <em>"Innovation = Ideas + Leader + Team + Plan."</em> A retail bank has a working prototype of an ML model that pre-approves SME loans in minutes rather than weeks. Sort the 6 bank capabilities below into <strong>Shared Staff (Performance Engine)</strong> or <strong>Dedicated Team</strong>:
       </p>
       <div class="grid-2">
         <div class="subcard text-xs space-y-sm">
-          <div class="bold text-sm">Theory Checklist (10m Theory + 10m Application)</div>
+          <div class="bold text-sm">Rubric Breakdown (10m Theory + 10m Bank Application)</div>
           <ul class="clean-list">
-            <li><strong>Why Conflict is Inevitable (2m):</strong> The <em>Performance Engine</em> is designed for routine efficiency and predictable KPIs; innovation is non-routine and uncertain.</li>
-            <li><strong>Why Rebels Fail (2m):</strong> Fighting existing routines from inside loses; pure isolated skunkworks fail to leverage company assets.</li>
-            <li><strong>Organising Model (3m):</strong> <em>Project Team = Dedicated Team + Shared Staff</em>. Shared Staff do only what fits existing routines; Dedicated Team is built from scratch (new roles, outside hires, distinct metrics) under a supervising executive.</li>
-            <li><strong>Disciplined Experimentation (3m):</strong> Formalise a custom plan &amp; explicit <strong>"Hypothesis of Record"</strong>, "spend a little, learn a lot", and judge leaders on <em>learning velocity</em>, not initial revenue forecasts.</li>
+            <li><strong>Why Conflict is Inevitable (2m):</strong> The <em>Performance Engine</em> is engineered for repeatable efficiency, predictable cash flows, and strict compliance KPIs; innovation is non-routine and uncertain.</li>
+            <li><strong>Why Lone Rebels Fail (2m):</strong> The Performance Engine can only run incremental improvements on its own; lone "rebel" intrapreneurs fighting entrenched organisational processes get crushed.</li>
+            <li><strong>Organising Model (3m):</strong> <em>Project Team = Dedicated Team + Shared Staff</em>. Shared Staff handle tasks that fit existing routines; the Dedicated Team is built from scratch (outside hires, new roles, distinct metrics) and protected by a senior supervising executive.</li>
+            <li><strong>Disciplined Experimentation (3m):</strong> Treat the rollout as a scientific experiment with a custom plan and formal <strong>"Hypothesis of Record"</strong>; <em>"spend a little, learn a lot"</em>; evaluate leaders on <strong>learning velocity</strong> (how fast assumptions on default rates, bias, and drift are tested), not premature profit targets.</li>
           </ul>
         </div>
         <div class="subcard">
           <div class="flex-between" style="margin-bottom: 8px;">
-            <span class="text-xs bold uppercase muted">Interactive Bank ML Sorter</span>
+            <span class="text-xs bold uppercase muted">Interactive Bank ML Capability Sorter</span>
             <span id="sorter-score" class="badge badge-primary">0 / 6 Correct</span>
           </div>
           <div id="sorter-items" class="space-y-sm"></div>
@@ -427,67 +505,73 @@
     <div class="card">
       <div class="flex-between" style="padding-bottom: 10px; border-bottom: 1px solid var(--border);">
         <div>
-          <span class="badge badge-purple">Week 4 • Theme 3</span>
+          <span class="badge badge-purple">Week 4 &bull; Theme 3</span>
           <h2 style="margin-top: 4px;">Organising R&amp;D (PARC vs. Open Innovation) &amp; Financing (Mazzucato vs. Westlake)</h2>
         </div>
-        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t3');">Practice Theme 3 Essay Prompt →</button>
+        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t3');">
+          <span>Practice Theme 3 Essay Prompt</span>
+          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
       </div>
       <p class="text-sm muted" style="margin-top: 10px;">
-        <strong>Two Core Enquiries:</strong> (1) How should corporations organise R&amp;D? (Centralised research labs vs. Open Innovation vs. Hybrid models). (2) Who takes the true risk in financing breakthrough technologies? (The Entrepreneurial State vs. private venture capital).
+        <strong>Two Core Enquiries:</strong> (1) How should firms structure R&amp;D? (Centralised corporate labs vs. Chesbrough's Open Innovation vs. O'Reilly &amp; Tushman's Structural Ambidexterity). (2) Who takes the real risk in financing breakthrough technologies? (Mariana Mazzucato's <em>Entrepreneurial State</em> vs. Stian Westlake's critique, and Eric Ries's <em>Lean Startup</em> vs. Reid Hoffman's <em>Blitzscaling</em>).
       </p>
     </div>
 
     <!-- Organising -->
     <div class="card space-y">
-      <h3>1. Organising Innovation: Centralised Research Labs vs. Open Innovation</h3>
+      <h3>1. Organising Innovation: Centralised Corporate Labs vs. Open Innovation vs. Ambidexterity</h3>
       <div class="grid-3 text-xs">
         <div class="subcard space-y-sm">
-          <span class="badge badge-primary">Centralised Labs</span>
-          <div class="bold text-sm">Bell Labs &amp; Xerox PARC</div>
-          <p class="muted"><strong>Strengths:</strong> Long-term horizon, deep interdisciplinary research insulated from quarterly revenue (transistor, laser, UNIX, GUI, Ethernet, laser printer).</p>
-          <p class="muted"><strong>Why Xerox Failed to Monetise GUI (The PARC Dilemma):</strong> (1) <em>Core rigidity:</em> Xerox saw itself as a copier company; (2) <em>Architectural filtering</em> (Henderson &amp; Clark); (3) <em>Weak appropriability &amp; missing complementary assets</em> (Teece, 1986).</p>
+          <span class="badge badge-primary">Centralised R&amp;D Labs</span>
+          <div class="bold text-sm">Bell Labs, Xerox PARC &amp; The HP Way</div>
+          <p class="muted"><strong>Strengths:</strong> Long-term patient capital insulated from quarterly profit pressures enabled fundamental breakthroughs (Bell Labs: transistor, laser, UNIX, information theory; Xerox PARC: GUI, bitmapped display, Ethernet, laser printing).</p>
+          <p class="muted"><strong>Why Xerox Failed to Capture Value from the GUI:</strong>
+            <br/>1. <em>Core Rigidity:</em> Xerox executives viewed the firm strictly as a paper copier business.
+            <br/>2. <em>Architectural Filtering (Henderson &amp; Clark, 1990):</em> Communication channels filtered out non-copier architectures.
+            <br/>3. <em>Complementary Assets &amp; Appropriability (Teece, 1986):</em> Xerox lacked consumer software ecosystems and allowed Apple/Microsoft to appropriate the paradigm.</p>
         </div>
 
         <div class="subcard space-y-sm">
           <span class="badge badge-emerald">Open Innovation</span>
-          <div class="bold text-sm">Henry Chesbrough (2003)</div>
-          <p class="muted"><strong>Core Premise:</strong> "Not all the smart people work for us." Knowledge flows across permeable organizational boundaries.</p>
-          <p class="muted"><strong>Inbound:</strong> Licensing external IP, startup acquisitions, academic partnerships.<br/><strong>Outbound:</strong> Spinning out non-core tech or open-sourcing software (Google open-sourcing TensorFlow/Kubernetes) to shape ecosystem standards.</p>
+          <div class="bold text-sm">Henry Chesbrough (2003) &amp; Enkel et al. (2020)</div>
+          <p class="muted"><strong>Core Premise:</strong> <em>"Not all the smart people work for us."</em> Replaces the closed internal R&amp;D funnel with permeable firm boundaries, shifting from R&amp;D to Acquisition-and-Development (A&amp;D).</p>
+          <p class="muted"><strong>Inbound Open Innovation:</strong> Licensing external university/startup IP, corporate venture capital (CVC), crowdsourcing.<br/><strong>Outbound Open Innovation:</strong> Spinning out non-core technologies so they do not sit on the shelf like PARC's GUI, or open-sourcing frameworks (Google open-sourcing TensorFlow &amp; Kubernetes) to commoditise complements and set industry standards.</p>
         </div>
 
         <div class="subcard space-y-sm">
-          <span class="badge badge-amber">Hybrid / Ambidexterity</span>
-          <div class="bold text-sm">What Stays In vs. Out?</div>
-          <p class="muted"><strong>Seminar Slide 6 Rule:</strong> Never just recommend "hybrid" — specify <em>what is internal and what is external</em>!</p>
-          <p class="muted"><strong>Level 7 Model:</strong> Keep core safety-critical IP, proprietary data architectures, and long-term moonshots <strong>internal</strong> (via O'Reilly &amp; Tushman <em>structural ambidexterity</em>), while using <strong>external</strong> open innovation for speed to market and peripheral tooling.</p>
+          <span class="badge badge-amber">Structural Ambidexterity</span>
+          <div class="bold text-sm">Defining the Hybrid Boundary (Slide 6 Rule)</div>
+          <p class="muted"><strong>Seminar Warning:</strong> Never just write "use a hybrid model" &mdash; you must explicitly specify <em>what stays internal vs. what goes external</em>.</p>
+          <p class="muted"><strong>O'Reilly &amp; Tushman Framework:</strong> Maintain <strong>structural ambidexterity</strong> by separating <em>exploitative units</em> (incremental efficiency) from <em>exploratory units</em> (radical R&amp;D), linked at the senior executive level. Keep proprietary model weights, safety-critical architectures, and high-appropriability IP <strong>internal</strong>; use <strong>external</strong> open innovation for application ecosystems, peripheral tooling, and market speed.</p>
         </div>
       </div>
     </div>
 
     <!-- Financing -->
     <div class="card space-y">
-      <h3>2. Financing Innovation: Valley of Death &amp; Mazzucato vs. Westlake</h3>
+      <h3>2. Financing Innovation: The Valley of Death &amp; Mazzucato vs. Westlake</h3>
       <div class="grid-2">
         <div class="subcard text-xs space-y-sm">
-          <div class="bold text-sm">The Debate: Whose Risk? Whose Reward?</div>
-          <p><strong>Mariana Mazzucato (<em>The Entrepreneurial State</em>):</strong> Foundational technologies in the iPhone (Internet, GPS, touchscreen, Siri, microchips) were funded at TRL 1–4 by public agencies (DARPA, NSF, CIA). Critiques <em>"socialising risks while privatising rewards"</em> and argues the state should retain equity/royalties to fund future waves.</p>
-          <p><strong>Stian Westlake's Critique (<em>Capitalism without Capital</em> / Nesta):</strong>
-            <br/>1. <em>Tech-centric bias:</em> Mazzucato equates innovation solely with lab R&amp;D, ignoring massive private investments in software design, supply chains, and business models.
-            <br/>2. <em>State survivorship bias:</em> Celebrates the Internet while ignoring costly state commercial flops (Concorde, Minitel, breeder reactors).
-            <br/>3. <em>Complementary risks:</em> Early scientific research does not remove massive downstream commercial scaling risks.</p>
+          <div class="bold text-sm">The Core Policy Debate: Socialising Risks vs. Privatising Rewards</div>
+          <p><strong>Mariana Mazzucato (2013, <em>The Entrepreneurial State</em>) &amp; Rutger Bregman (2017):</strong> Debunks the myth that the state is merely a bureaucratic fixer of market failures. Demonstrates that every foundational technology inside the Apple iPhone &mdash; the Internet (DARPA), GPS (US DoD), multi-touch screens (NSF/CIA-funded university research), and Siri (DARPA) &mdash; was funded at high-risk TRL 1&ndash;4 by mission-oriented public agencies. Critiques private VC for entering only after the state has absorbed the fundamental uncertainty, thereby <em>"socialising risks while privatising rewards"</em> (proposing public equity stakes or income-contingent royalties).</p>
+          <p><strong>Stian Westlake (2014, Nesta Critique):</strong>
+            <br/>1. <em>Narrow Science/Hardware Bias:</em> Mazzucato equates innovation with laboratory R&amp;D, ignoring massive private investment in <strong>intangible assets</strong> (UX design, supply-chain orchestration, branding, business models).
+            <br/>2. <em>State Survivorship Bias:</em> Highlights successful public missions while ignoring expensive government commercial failures (Concorde supersonic jet, Minitel, Anglo-French breeder reactors).
+            <br/>3. <em>Downstream Commercial Risk:</em> Having raw components (GPS, Internet) does not make commercialising a global smartphone ecosystem risk-free.</p>
         </div>
 
         <div class="subcard text-xs">
-          <div class="bold text-sm" style="margin-bottom: 8px;">Capital Sources Across Technology Readiness Levels (TRLs)</div>
+          <div class="bold text-sm" style="margin-bottom: 8px;">Capital Sources Across Technology Readiness Levels (TRL 1&ndash;9)</div>
           <table>
             <thead>
-              <tr><th>Capital Source</th><th>Stage</th><th>Motivation &amp; Risk Profile</th></tr>
+              <tr><th>Capital Source</th><th>TRL Stage</th><th>Risk Profile, Incentives &amp; Constraints</th></tr>
             </thead>
             <tbody>
-              <tr><td><strong>Gov Grants (DARPA, UKRI)</strong></td><td>TRL 1–4</td><td>Very high technical risk; mission-oriented public infrastructure.</td></tr>
-              <tr><td><strong>Angels &amp; Accelerators</strong></td><td>TRL 3–5</td><td>Bridges the early <em>"Valley of Death"</em>; founder mentoring + high risk.</td></tr>
-              <tr><td><strong>Venture Capital (VC)</strong></td><td>TRL 5–8</td><td>Product-market fit &amp; hypergrowth; 10x power-law portfolio returns.</td></tr>
-              <tr><td><strong>Corporate VC (CVC)</strong></td><td>TRL 6–9</td><td>Strategic window on emerging tech + ecosystem synergies.</td></tr>
+              <tr><td><strong>State Grants &amp; Missions (DARPA, UKRI, ARIA)</strong></td><td>TRL 1&ndash;4</td><td>Absorbs fundamental scientific uncertainty; creates new markets before commercial viability exists.</td></tr>
+              <tr><td><strong>Bootstrapping, Angels &amp; Accelerators (Y Combinator)</strong></td><td>TRL 3&ndash;5</td><td>Bridges the early <em>"Valley of Death"</em> between lab prototype and initial commercial traction.</td></tr>
+              <tr><td><strong>Venture Capital (VC)</strong></td><td>TRL 5&ndash;8</td><td>10-year closed-end funds seeking power-law (10x&ndash;100x) exits; demands hypergrowth over steady profitability.</td></tr>
+              <tr><td><strong>Corporate VC (CVC) &amp; Debt / IPO</strong></td><td>TRL 6&ndash;9</td><td>Strategic alignment with parent corporation (CVC) or late-stage infrastructure scaling.</td></tr>
             </tbody>
           </table>
         </div>
@@ -496,19 +580,19 @@
 
     <!-- Scaling -->
     <div class="card space-y">
-      <h3>3. Startup Execution: Lean Startup (Ries) vs. Blitzscaling (Hoffman)</h3>
+      <h3>3. Startup Execution &amp; Scaling: Kawasaki, Ries (Lean Startup) &amp; Hoffman (Blitzscaling)</h3>
       <div class="grid-3 text-xs">
         <div class="subcard">
-          <div class="bold text-sm">Guy Kawasaki — Art of the Start</div>
-          <p class="muted" style="margin-top:4px;"><strong>Make Meaning:</strong> Create a 3-word mantra, "Jump to the Next Curve" (ice harvesting → ice factory → refrigerator), and craft <strong>DICEE</strong> products (Deep, Intelligent, Complete, Empowering, Elegant).</p>
+          <div class="bold text-sm">Guy Kawasaki &mdash; The Art of the Start 2.0</div>
+          <p class="muted" style="margin-top:4px;"><strong>Make Meaning, Not Just Money:</strong> Replace hollow corporate mission statements with a 3-word mantra (e.g., <em>"Empowering athletic performance"</em>). <strong>Jump to the Next Curve:</strong> True innovation jumps from ice-harvesting (1.0) &rarr; ice factory (2.0) &rarr; personal refrigerator (3.0). Build products that are <strong>DICEE</strong> (Deep, Intelligent, Complete, Empowering, Elegant).</p>
         </div>
         <div class="subcard">
-          <div class="bold text-sm">Eric Ries — The Lean Startup</div>
-          <p class="muted" style="margin-top:4px;"><strong>Validated Learning:</strong> Treat startups as hypotheses under uncertainty. Rapid <strong>Build–Measure–Learn</strong> MVP feedback loops to decide whether to <em>Pivot or Persevere</em>. <em>Limitation:</em> Risks getting stuck in incremental local maxima.</p>
+          <div class="bold text-sm">Eric Ries &mdash; The Lean Startup (2011)</div>
+          <p class="muted" style="margin-top:4px;"><strong>Validated Learning under Uncertainty:</strong> Treat every startup strategy as a falsifiable hypothesis. Deploy a <strong>Minimum Viable Product (MVP)</strong> through rapid <strong>Build&ndash;Measure&ndash;Learn</strong> feedback loops to decide whether to <em>Pivot or Persevere</em>. <strong>Critique:</strong> Over-reliance on customer feedback can trap firms in incremental local maxima rather than radical architectural leaps.</p>
         </div>
         <div class="subcard">
-          <div class="bold text-sm">Reid Hoffman — Blitzscaling</div>
-          <p class="muted" style="margin-top:4px;"><strong>Speed Over Efficiency:</strong> Burn capital aggressively in winner-take-all markets to capture global network scale first. <strong>Kuratko et al. Critique:</strong> Without true network moats, blitzscaling leads to catastrophic capital destruction and governance fraud (<em>WeWork, Theranos</em>).</p>
+          <div class="bold text-sm">Reid Hoffman &mdash; Blitzscaling (2016) vs. Kuratko et al. (2020)</div>
+          <p class="muted" style="margin-top:4px;"><strong>Speed Over Efficiency:</strong> In winner-take-all markets with strong two-sided network effects, burn capital aggressively to secure first-scaler monopoly. <strong>Kuratko, Holt &amp; Neubert (2020) (<em>The Good, The Bad, and The Ugly</em>):</strong> Contrast valid blitzscaling (<em>Flexport</em>) with catastrophic unit-economics and governance/ethical collapse when applied without true network moats (<em>WeWork, Uber, Zenefits, Theranos</em>).</p>
         </div>
       </div>
     </div>
@@ -521,45 +605,48 @@
     <div class="card">
       <div class="flex-between" style="padding-bottom: 10px; border-bottom: 1px solid var(--border);">
         <div>
-          <span class="badge badge-amber">Week 5 • Theme 4</span>
-          <h2 style="margin-top: 4px;">IP Rights, Open Source, UK GDPR / DUAA 2025 &amp; The EU AI Act</h2>
+          <span class="badge badge-amber">Week 5 &bull; Theme 4 (Dr. Joseph Aylett-Bullock)</span>
+          <h2 style="margin-top: 4px;">IP Rights, Open Source Fragility, UK GDPR / DUAA 2025 &amp; The EU AI Act</h2>
         </div>
-        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t4');">Practice Theme 4 Mock Prompt →</button>
+        <button class="btn-primary" onclick="switchTab('practice'); selectMockQuestion('t4');">
+          <span>Practice Theme 4 Mock Prompt</span>
+          <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
       </div>
       <p class="text-sm muted" style="margin-top: 10px;">
-        <strong>Four Legal Pillars for Data Scientists:</strong> (1) IP Frameworks &amp; Landmark Cases; (2) Open Source Cathedral/Bazaar vs. Infrastructure Fragility (Eghbal); (3) UK GDPR &amp; the Data (Use and Access) Act 2025 (DUAA) on Automated Decisions; and (4) The EU AI Act (Regulation 2024/1689) &amp; the Teichmann vs. Ebers Proportionality Debate.
+        <strong>Four Legal Pillars:</strong> (1) Intellectual Property (Patents, Copyright, Trade Secrets) &amp; Landmark Case Law; (2) Open Source Governance (Eric Raymond's <em>Cathedral &amp; Bazaar</em> vs. Nadia Eghbal's <em>Working in Public</em>); (3) UK GDPR &amp; the Data (Use and Access) Act 2025 (DUAA) on Automated Decision-Making; and (4) The EU AI Act (Regulation 2024/1689) &amp; the Teichmann vs. Ebers Proportionality Debate.
       </p>
     </div>
 
     <!-- IP Audit Sorter -->
     <div class="card space-y">
-      <h3>1. Interactive Seminar Activity (Slide 8): Start-Up IP Audit Sorter</h3>
+      <h3>1. Intellectual Property Rights, Landmark Case Law &amp; Interactive Start-Up IP Audit (Slide 8)</h3>
       <p class="text-xs muted">
-        <strong>Official Seminar Scenario:</strong> <em>"A start-up builds a ranking service from a published paper. A founder brings code from a former employer. The team also uses CC BY-NC photographs in its paid product. What should it investigate, replace, or protect before launch?"</em> Click the action for each item below:
+        <strong>Official Seminar Scenario (Slide 8):</strong> <em>"A start-up builds a ranking service from a published paper. A founder brings code from a former employer. The team also uses CC BY-NC photographs in its paid product. What should it investigate, replace, or protect before launch?"</em>
       </p>
 
       <div class="grid-2">
         <div class="subcard text-xs space-y-sm">
-          <div class="bold text-sm">IP Mechanisms &amp; Landmark Talis Cases</div>
+          <div class="bold text-sm">IP Regimes, Economic Theory &amp; Required Talis Case Law</div>
           <table>
             <thead>
-              <tr><th>IP Right</th><th>Scope &amp; Duration</th><th>Landmark Case / Trap</th></tr>
+              <tr><th>IP Right</th><th>Scope &amp; Duration</th><th>Landmark Case &amp; Legal Doctrine</th></tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Patents</strong></td>
-                <td>Functional invention (novel, non-obvious). ~20 yrs for public disclosure.</td>
-                <td><strong>Brin &amp; Page Paper vs. US6285999B1:</strong> A published academic paper does NOT mean the method is free to commercialise — Stanford patented PageRank! Beware <em>patent thickets / tragedy of the anticommons</em>.</td>
+                <td>Functional invention (novel, inventive step, industrial application). Territorial, ~20 yrs in exchange for public disclosure (<em>Utilitarian Bargain</em>).</td>
+                <td><strong>Brin &amp; Page (1998) Paper vs. US6285999B1:</strong> Publishing an academic paper does NOT place the method in the public domain if patented! In UK/EU, <em>"software as such"</em> is excluded unless it produces a further <strong>technical effect</strong>. Beware <strong>Heller &amp; Eisenberg's Tragedy of the Anticommons</strong> (patent thickets blocking downstream innovation).</td>
               </tr>
               <tr>
                 <td><strong>Copyright</strong></td>
-                <td>Original expression (code as literary work). Life + 70 yrs.</td>
-                <td><strong>Temple Island v New English Teas [2012] ("Red Bus Case"):</strong> Cannot copyright the <em>idea</em> of a red bus by Parliament, but copying the visual composition/monochrome contrast is unlawful substantial reproduction.</td>
+                <td>Original expression of an idea (source code as literary work, images, prose). Automatic, Life + 70 yrs.</td>
+                <td><strong>Temple Island Collections v New English Teas [2012] ("Red Bus Case"):</strong> Copyright never protects an <em>idea</em> (a red bus on Westminster Bridge), but copying the specific visual composition and monochrome background contrast constitutes unlawful substantial reproduction. Also note <em>Google v. Oracle</em> (fair use of declaring API code).</td>
               </tr>
               <tr>
                 <td><strong>Trade Secrets</strong></td>
-                <td>Confidential commercial info (weights, formulas). Indefinite while secret.</td>
-                <td><strong>Faccenda Chicken [1986] &amp; Vestergaard [2013]:</strong> Employees take general skill/knowledge to new jobs, but proprietary code/trade secrets belong to the employer.</td>
+                <td>Confidential commercial info (proprietary datasets, model weights, formulas). Indefinite while secret; does not block independent reverse engineering.</td>
+                <td><strong>Faccenda Chicken v Fowler [1986] &amp; Vestergaard v Bestnet [2013]:</strong> Distinguishes an employee's general skill and knowledge (portable to a new job) from high-grade confidential trade secrets and employer-owned source code (which cannot be taken to a startup).</td>
               </tr>
             </tbody>
           </table>
@@ -567,7 +654,7 @@
 
         <div class="subcard">
           <div class="flex-between" style="margin-bottom: 8px;">
-            <span class="text-xs bold uppercase muted">Interactive Start-Up IP Audit</span>
+            <span class="text-xs bold uppercase muted">Interactive Start-Up IP Audit Sorter</span>
             <span id="ip-audit-score" class="badge badge-amber">0 / 4 Audited</span>
           </div>
           <div id="ip-audit-items" class="space-y-sm"></div>
@@ -577,29 +664,32 @@
 
     <!-- Open Source -->
     <div class="card space-y">
-      <h3>2. Open Source Dynamics: Eric Raymond (1999) vs. Nadia Eghbal (2020)</h3>
+      <h3>2. Open Source Software: Raymond's Bazaar (1999) vs. Eghbal's Infrastructure Fragility (2020)</h3>
       <div class="grid-3 text-xs">
-        <div class="subcard">
-          <div class="bold text-sm">Eric Raymond — Cathedral &amp; Bazaar</div>
-          <p class="muted" style="margin-top:4px;">Contrasts top-down <em>Cathedral</em> development with decentralized <em>Bazaar</em> collaboration (Linux). Famous rule — <strong>Linus's Law:</strong> <em>"Given enough eyeballs, all bugs are shallow."</em> Assumes peer contribution scales effortlessly.</p>
+        <div class="subcard space-y-sm">
+          <span class="badge badge-primary">Optimistic Thesis</span>
+          <div class="bold text-sm">Eric Raymond &mdash; The Cathedral and the Bazaar</div>
+          <p class="muted">Contrasts hierarchical, closed-team <strong>Cathedral</strong> releases with decentralised, peer-reviewed <strong>Bazaar</strong> collaboration (Linux kernel). Formulates <strong>Linus's Law:</strong> <em>"Given enough eyeballs, all bugs are shallow."</em> Assumes user growth naturally brings proportional developer contributions.</p>
         </div>
-        <div class="subcard">
-          <div class="bold text-sm">Nadia Eghbal — Working in Public</div>
-          <p class="muted" style="margin-top:4px;">Empirical rebuttal: modern open source is rarely a communal bazaar. Most critical repos are <strong>Stadiums</strong> (1 overworked maintainer + thousands of passive free-riding users). Modern tech rests on unpaid digital infrastructure (<em>Heartbleed, Log4j, XZ Utils backdoor</em>).</p>
+        <div class="subcard space-y-sm">
+          <span class="badge badge-rose">Empirical Reality Check</span>
+          <div class="bold text-sm">Nadia Eghbal &mdash; Working in Public (2020)</div>
+          <p class="muted">Classifies open-source projects by contributor vs. user growth: while Linux is a rare <strong>Federation</strong> (high contributors, high users), most critical packages are <strong>Stadiums</strong> (1&ndash;2 solo unpaid maintainers supporting millions of passive consumers). Exposes severe security fragility: <strong>OpenSSL Heartbleed (2014)</strong>, <strong>Apache Log4j / Log4Shell (2021)</strong>, and the <strong>XZ Utils social-engineering backdoor (2024)</strong>.</p>
         </div>
-        <div class="subcard">
-          <div class="bold text-sm">Permissive vs. Copyleft Licences</div>
-          <p class="muted" style="margin-top:4px;"><strong>Permissive (MIT, Apache 2.0):</strong> Can be modified and embedded into closed-source commercial software with minimal restrictions.<br/><strong>Copyleft / Viral (GPLv2, GPLv3):</strong> Any distributed derivative work must also be released as open source under GPL terms.</p>
+        <div class="subcard space-y-sm">
+          <span class="badge badge-emerald">Licensing Architecture</span>
+          <div class="bold text-sm">Permissive vs. Copyleft &amp; Creative Commons</div>
+          <p class="muted"><strong>Permissive (MIT, BSD, Apache 2.0):</strong> Allows modification and bundling inside proprietary closed-source products (Apache 2.0 adds an explicit patent grant).<br/><strong>Copyleft / Viral (GPLv2, GPLv3, AGPL):</strong> Requires any distributed derivative work (or network service under AGPL) to release its full source code under the same GPL licence.<br/><strong>Creative Commons:</strong> <code>CC BY</code> (attribution) vs. <code>CC BY-NC</code> (strictly forbids commercial use).</p>
         </div>
       </div>
     </div>
 
     <!-- EU AI Act & DUAA 2025 -->
     <div class="card space-y">
-      <h3>3. EU AI Act (Reg 2024/1689), UK GDPR / DUAA 2025 &amp; Proportionality</h3>
+      <h3>3. EU AI Act (Regulation 2024/1689), UK GDPR / DUAA 2025 &amp; Seminar Case Studies (Slides 9, 10 &amp; 13)</h3>
       <div class="grid-2">
         <div class="subcard space-y-sm">
-          <div class="text-xs bold uppercase muted">Click a Regulatory Pillar to Inspect Details</div>
+          <div class="text-xs bold uppercase muted">Select a Regulatory Pillar or Seminar Case to Inspect</div>
           <div class="grid-2" style="gap: 8px;">
             <button onclick="selectLegalTopic('ai_tiers')" id="legbtn-ai_tiers" class="btn-primary">1. EU AI Act 4 Risk Tiers</button>
             <button onclick="selectLegalTopic('roles')" id="legbtn-roles">2. Provider vs. Deployer</button>
@@ -610,11 +700,14 @@
         </div>
 
         <div class="subcard text-xs space-y-sm">
-          <div class="bold text-sm">Meaningful Human Review Diagnostics (Slide 9 &amp; 13 Cases)</div>
-          <p><strong>GDPR Art. 5 Core Principles:</strong> (1) Lawfulness, fairness, transparency; (2) Purpose limitation; (3) Data minimisation; (4) Accuracy; (5) Storage limitation; (6) Integrity &amp; confidentiality; (7) Accountability.</p>
-          <p><strong>Why "Rubber-Stamping" Fails (Slide 9 Retailer Case):</strong> A staff member clicking "approve" without examining evidence does <em>not</em> make an automated account closure human — it remains a <strong>solely automated decision</strong> requiring statutory safeguards.</p>
-          <p><strong>Why "Data-Error-Only Review" Fails (Slide 13 Admissions Case):</strong> Offering human review <em>only</em> when an applicant identifies an input data error violates <strong>UK DUAA 2025</strong> safeguards! Applicants cannot see proprietary model weights, and the right to contest covers unfair algorithmic inferences and edge cases, not just typos.</p>
-          <p><strong>How to Test Human Review:</strong> Audit review duration and evidence-access logs, track override/reversal rates, and inject blind <em>"seeded error"</em> test cases into the review queue.</p>
+          <div class="bold text-sm">Applied Seminar Scenarios (Slides 9, 10 &amp; 13)</div>
+          <ul class="clean-list">
+            <li><strong>UK GDPR Art. 5 Seven Principles:</strong> (1) Lawfulness, fairness &amp; transparency; (2) Purpose limitation; (3) Data minimisation; (4) Accuracy; (5) Storage limitation; (6) Integrity &amp; confidentiality; (7) Accountability.</li>
+            <li><strong>Slide 9 Case (UK Online Retailer Fraud Model):</strong> Retailer repurposes shopping history to automatically close customer accounts for suspected refund abuse, with a staff member briefly clicking "approve".
+              <br/><em>Legal Diagnosis:</em> Repurposing data triggers <strong>purpose limitation &amp; transparency</strong> checks. A staff member rubber-stamping outputs without investigating evidence does <strong>not</strong> make the decision human &mdash; it remains a <strong>solely automated decision with significant effect</strong> under UK DUAA 2025, requiring proactive notice, customer representations, and genuine human intervention (tested via override rates, review duration logs, and blind seeded test cases).</li>
+            <li><strong>Slide 10 Case (EU Road Authority AI Traffic-Signal Controller):</strong> An EU road authority deploys an AI system controlling traffic signals on a busy urban corridor.
+              <br/><em>Legal Diagnosis:</em> Classified as <strong>High-Risk AI under Annex III Point 2 (Critical Infrastructure: road traffic management safety components)</strong>. Under <strong>Teichmann</strong>, severe physical residual harm to pedestrians demands strict ex-ante fault-tree testing and manual fail-safe overrides. Under <strong>Ebers (2024)</strong>, regulators must also weigh congestion/emission reductions and allow phased shadow-mode trials rather than blocking deployment indefinitely.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -628,12 +721,13 @@
       <div class="flex-between" style="padding-bottom: 12px; border-bottom: 1px solid var(--border);">
         <div>
           <span class="badge badge-emerald">Bristol Level 7 Exam Preparation</span>
-          <h2 style="margin-top: 4px;">Official Mock Prompts, Timed Pad &amp; Level 7 Rubric Grader</h2>
+          <h2 style="margin-top: 4px;">Official Seminar &amp; Mock Exam Prompts, Timed Pad &amp; Level 7 Rubric Grader</h2>
         </div>
 
         <div class="subcard flex-row" style="padding: 8px 12px;">
-          <span class="text-xs muted">Self-Timer:</span>
-          <span id="exam-timer-display" class="mono bold" style="font-size: 1.1rem;">20:00</span>
+          <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span class="text-xs muted">Timer:</span>
+          <span id="exam-timer-display" class="mono bold" style="font-size: 1.05rem;">20:00</span>
           <button class="btn-primary" onclick="toggleExamTimer()" id="exam-timer-btn">Start</button>
           <button onclick="setTimerMinutes(20)">20m</button>
           <button onclick="setTimerMinutes(90)">90m</button>
@@ -642,11 +736,12 @@
 
       <div class="flex-row" style="margin-top: 14px;">
         <button onclick="selectMockQuestion('t1')" id="qbtn-t1" class="btn-primary">Theme 1: Perez vs Christensen</button>
+        <button onclick="selectMockQuestion('t1sem')" id="qbtn-t1sem">Theme 1: Birkinshaw &amp; Strategy</button>
         <button onclick="selectMockQuestion('t2q1')" id="qbtn-t2q1">Theme 2 Q1: Rogers vs Moore</button>
-        <button onclick="selectMockQuestion('t2q2')" id="qbtn-t2q2">Theme 2 Q2: Bank ML Pre-Approval</button>
-        <button onclick="selectMockQuestion('t3')" id="qbtn-t3">Theme 3: Organising &amp; Financing</button>
+        <button onclick="selectMockQuestion('t2q2')" id="qbtn-t2q2">Theme 2 Q2: Bank ML Case</button>
+        <button onclick="selectMockQuestion('t3')" id="qbtn-t3">Theme 3: Organising &amp; Finance</button>
         <button onclick="selectMockQuestion('t4')" id="qbtn-t4">Theme 4: Admissions AI &amp; DUAA</button>
-        <button onclick="selectMockQuestion('flash')" id="qbtn-flash">🎯 10-Card Flashcard Deck</button>
+        <button onclick="selectMockQuestion('flash')" id="qbtn-flash">12-Card Active Recall Deck</button>
       </div>
 
       <div id="mock-prompt-box" class="subcard text-sm space-y-sm" style="margin-top: 14px;"></div>
@@ -654,10 +749,10 @@
       <div id="mock-workspace" class="grid-2" style="margin-top: 14px;">
         <div>
           <div class="flex-between" style="margin-bottom: 6px;">
-            <label class="text-xs bold uppercase muted">Your Practice Answer / Bullet Plan (Auto-Saved)</label>
+            <label for="practice-textarea" class="text-xs bold uppercase muted">Your Practice Answer / Bullet Plan (Saved Locally in Browser)</label>
             <span id="word-count" class="text-xs mono muted">0 words</span>
           </div>
-          <textarea id="practice-textarea" rows="13" oninput="savePracticeText()" placeholder="Type your timed response or bullet points here..."></textarea>
+          <textarea id="practice-textarea" rows="14" oninput="savePracticeText()" placeholder="Write your timed essay response or structured bullet points here..."></textarea>
         </div>
 
         <div class="subcard" style="display: flex; flex-direction: column; justify-content: space-between;">
@@ -711,17 +806,17 @@
 
     // THEME 1
     const PEREZ_SURGES = [
-      { num: '1st Surge (1771)', name: 'Industrial Revolution', country: 'Britain', input: 'Water power, cotton, iron', infra: 'Canals, turnpike roads, water mills', crash: 'Canal Mania (1790s)' },
-      { num: '2nd Surge (1829)', name: 'Age of Steam & Railways', country: 'Britain → Europe/US', input: 'Coal & iron', infra: 'National railways, telegraph, steamships', crash: 'Railway Panic (1847)' },
-      { num: '3rd Surge (1875)', name: 'Steel, Electricity & Heavy Eng.', country: 'USA & Germany overtake UK', input: 'Cheap Bessemer steel, electricity', infra: 'Electrical grids, global steel shipping', crash: '1890s Financial Panics' },
-      { num: '4th Surge (1908)', name: 'Oil, Autos & Mass Production', country: 'USA (Ford Model T)', input: 'Cheap oil & petrochemicals', infra: 'Interstate highways, airports, suburbs', crash: '1929 Crash → Post-WWII Golden Age' },
-      { num: '5th Surge (1971)', name: 'Age of ICT & Microelectronics', country: 'USA (Intel) → Global', input: 'Cheap silicon microchips & software', infra: 'Fibre-optic internet, cloud, mobile', crash: '2000 Dot-Com / 2008 Financial Crash' }
+      { num: '1st Surge (1771)', name: 'Industrial Revolution', country: 'Britain (Arkwright Cromford Mill)', input: 'Water power, raw cotton, wrought iron', infra: 'Canals, turnpike roads, water mills', crash: 'Canal Mania (1790s)' },
+      { num: '2nd Surge (1829)', name: 'Age of Steam & Railways', country: 'Britain -> Europe & USA (Rocket)', input: 'Coal & iron', infra: 'National railways, telegraph, steamships', crash: 'Railway Panic (1847)' },
+      { num: '3rd Surge (1875)', name: 'Steel, Electricity & Heavy Eng.', country: 'USA & Germany overtake Britain', input: 'Cheap Bessemer steel, copper & electricity', infra: 'Electrical grids, global steel shipping, transcontinental rail', crash: '1890s Barings / Global Panics' },
+      { num: '4th Surge (1908)', name: 'Oil, Autos & Mass Production', country: 'USA (Ford Highland Park Model T)', input: 'Cheap petroleum & petrochemicals', infra: 'Interstate highways, airports, refineries, suburbs', crash: '1929 Wall St Crash -> Post-WWII Golden Age' },
+      { num: '5th Surge (1971)', name: 'Age of ICT & Microelectronics', country: 'USA (Intel 4004) -> Global', input: 'Cheap silicon microprocessors & software', infra: 'Fibre-optic internet, mobile networks, cloud data centres', crash: '2000 Dot-Com & 2008 Crash (Pending Green Golden Age)' }
     ];
 
     function initPerez() {
       const container = document.getElementById('surge-buttons');
       container.innerHTML = PEREZ_SURGES.map((s, idx) => `
-        <button onclick="selectSurge(${idx})" id="surge-btn-${idx}" style="text-align:left; padding:10px;">
+        <button onclick="selectSurge(${idx})" id="surge-btn-${idx}" style="text-align:left; padding:10px; display:block;">
           <div class="text-xs mono muted">${s.num}</div>
           <div class="text-xs bold" style="margin-top:2px;">${s.name}</div>
         </button>
@@ -740,38 +835,38 @@
       document.getElementById('surge-detail').innerHTML = `
         <div class="flex-between" style="padding-bottom:6px; border-bottom:1px solid var(--border);">
           <span class="bold">${s.num}: ${s.name}</span>
-          <span class="badge badge-primary">Core: ${s.country}</span>
+          <span class="badge badge-primary">Core Catalyst: ${s.country}</span>
         </div>
         <div class="grid-3 text-xs" style="margin-top:8px;">
           <div><strong class="muted">Cheap Key Input:</strong><br/>${s.input}</div>
           <div><strong class="muted">New Infrastructure Built:</strong><br/>${s.infra}</div>
-          <div><strong class="muted">Turning Point Bubble/Crash:</strong><br/>${s.crash}</div>
+          <div><strong class="muted">Turning Point Bubble / Crash:</strong><br/>${s.crash}</div>
         </div>
       `;
     }
 
     const PEREZ_PHASES = {
       installation: {
-        title: '1. Installation Period (Irruption → Frenzy)',
+        title: '1. Installation Period: Irruption -> Frenzy (Creative Destruction)',
         points: [
-          '<strong>Dominant Actor:</strong> Financial Capital (venture speculators, investment bankers).',
-          '<strong>Mechanism:</strong> New paradigm erupts; financial capital decouples from real economy, driving a speculative asset bubble.',
-          '<strong>Crucial Rubric Point (2 marks):</strong> Financial bubbles are functionally vital because they finance massive over-investment in physical infrastructure (railways, dark fibre-optic cables) that rational ROI calculators would never fund.'
+          '<strong>Dominant Actor:</strong> Financial Capital (venture speculators, investment bankers seeking short-term capital gains).',
+          '<strong>Irruption to Frenzy:</strong> New techno-economic paradigm erupts; financial capital decouples from the real economy, creating massive wealth polarisation and a speculative mania.',
+          '<strong>Crucial Rubric Point (2 marks):</strong> Speculative bubbles are functionally vital because they finance massive over-investment in foundational infrastructure (e.g. canal networks, railway tracks, dark fibre-optic cables) that rational ROI calculators would never fund.'
         ]
       },
       turning: {
-        title: '2. Turning Point (Bubble Crash & Institutional Recoupling)',
+        title: '2. The Turning Point: Bubble Crash & Institutional Reset',
         points: [
-          '<strong>Trigger:</strong> Speculative bubble bursts (1929 Crash, 2000 Dot-Com Crash, 2008 Crash).',
-          '<strong>Institutional Realignment:</strong> Economic crisis forces governments to regulate speculation and establish new rules that enable broad deployment.'
+          '<strong>Trigger:</strong> Speculative bubble collapses (e.g. 1847 Railway Panic, 1929 Crash, 2000 Dot-Com / 2008 Financial Crisis), exposing the mismatch between the new technological potential and outdated socio-institutional frameworks.',
+          '<strong>Institutional Realignment:</strong> Crisis forces governments to rein in financial speculation, pass new regulations (antitrust, welfare state, green industrial policy), and hand leadership over to Production Capital.'
         ]
       },
       deployment: {
-        title: '3. Deployment Period (Synergy / "Golden Age" → Maturity)',
+        title: '3. Deployment Period: Synergy ("Golden Age") -> Maturity (Creative Construction)',
         points: [
-          '<strong>Dominant Actor:</strong> Production Capital (operating businesses across the real economy).',
-          '<strong>Mechanism:</strong> Production capital uses the cheap infrastructure left behind by the bubble to transform every industry ("Golden Age").',
-          '<strong>Maturity:</strong> Eventually productivity plateaus and markets saturate, setting the stage for the next revolution.'
+          '<strong>Dominant Actor:</strong> Production Capital (operating businesses building long-term productive capacity and employment across the real economy).',
+          '<strong>Synergy / Golden Age:</strong> Production capital leverages the cheap, ubiquitous infrastructure left behind by the bubble to modernise every traditional industry (e.g. Post-WWII Suburban Boom; Perez’s proposed "Global Green Golden Age" for late ICT/AI).',
+          '<strong>Maturity:</strong> Eventually productivity gains plateau and markets saturate, creating fertile ground for the next technological revolution.'
         ]
       }
     };
@@ -785,19 +880,44 @@
     }
 
     function setChristensenHighlight(mode) {
-      document.getElementById('svg-sustaining').style.opacity = (mode === 'all' || mode === 'sustaining') ? '1' : '0.2';
-      document.getElementById('svg-disruptive').style.opacity = (mode === 'all' || mode === 'disruptive') ? '1' : '0.2';
-      document.getElementById('svg-dilemma').style.opacity = (mode === 'all' || mode === 'dilemma') ? '1' : '0.2';
+      ['all', 'sustaining', 'disruptive', 'dilemma'].forEach(k => {
+        const b = document.getElementById('cbtn-' + k);
+        if (b) {
+          if (k === mode) b.classList.add('btn-primary');
+          else b.classList.remove('btn-primary');
+        }
+      });
+      document.getElementById('svg-sustaining').style.opacity = (mode === 'all' || mode === 'sustaining') ? '1' : '0.18';
+      document.getElementById('svg-disruptive').style.opacity = (mode === 'all' || mode === 'disruptive') ? '1' : '0.18';
+      document.getElementById('svg-dilemma').style.opacity = (mode === 'all' || mode === 'dilemma') ? '1' : '0.18';
     }
 
     // THEME 2
     const ADOPTER_INFO = {
-      innovators: { title: 'Innovators (2.5%) — "Technology Enthusiasts / Techies"', desc: 'Venturesome gatekeepers who love technology for its own sake and tolerate buggy alpha releases.' },
-      early_adopters: { title: 'Early Adopters (13.5%) — Moore’s "Visionaries"', desc: 'Opinion leaders seeking a revolutionary competitive breakthrough. They buy custom project visions rather than proven industry standards.' },
-      chasm: { title: '⚡ THE CHASM (Moore’s Discontinuity vs. Rogers’ Smooth Curve)', desc: 'Why high-tech startups die here: Visionaries want radical leaps, whereas Pragmatists (Early Majority) want risk-free continuity and ONLY trust references from fellow Pragmatists. Crossing Strategy: Target 1 narrow Beachhead Niche with acute pain → deliver the "Whole Product" → win adjacent niches (Bowling Alley) → Tornado → Main Street.' },
-      early_majority: { title: 'Early Majority (34%) — Moore’s "Pragmatists"', desc: 'Deliberate, risk-averse buyers who require the complete "Whole Product" (core tech + training + support + integrations) and peer references within their own vertical.' },
-      late_majority: { title: 'Late Majority (34%) — Moore’s "Conservatives"', desc: 'Sceptical and price-sensitive; adopt out of economic necessity or peer pressure once the product is a mature commodity.' },
-      laggards: { title: 'Laggards (16%) — "Sceptics"', desc: 'Traditionalists who only adopt when the technology is completely invisible inside another appliance.' }
+      innovators: {
+        title: 'Innovators (2.5%) — Moore’s "Technology Enthusiasts / Techies"',
+        desc: 'Venturesome gatekeepers who appreciate technology for its own sake, tolerate buggy alpha products, and act as the initial bridge bringing external inventions into the social system.'
+      },
+      early_adopters: {
+        title: 'Early Adopters (13.5%) — Moore’s "Visionaries"',
+        desc: 'Respected opinion leaders (Rogers) / revolutionary change-agents (Moore) who buy incomplete technologies to achieve a dramatic, proprietary competitive leap rather than an incremental upgrade.'
+      },
+      chasm: {
+        title: 'THE CHASM — Moore’s Structural Discontinuity vs. Rogers’ Smooth Curve',
+        desc: 'Why high-tech ventures stall at 16%: Visionaries want radical disruption and tolerate bespoke workarounds, whereas Pragmatists (Early Majority) want risk-free evolutionary continuity and ONLY trust references from fellow Pragmatists in their own vertical. Crossing Strategy: (1) Target 1 narrow "D-Day Beachhead" niche with acute pain; (2) Assemble the complete "Whole Product" (core tech + training + standards + integrations); (3) Expand into adjacent niches ("Bowling Alley") -> mass adoption ("Tornado") -> mature "Main Street".'
+      },
+      early_majority: {
+        title: 'Early Majority (34%) — Moore’s "Pragmatists"',
+        desc: 'Deliberate, risk-averse buyers who adopt just before the average member of a system. They refuse to act as beta testers, demand the complete "Whole Product", and rely heavily on homophilous peer references.'
+      },
+      late_majority: {
+        title: 'Late Majority (34%) — Moore’s "Conservatives"',
+        desc: 'Sceptical, price-sensitive buyers who adopt only out of economic necessity or intense peer pressure once the technology is a mature, pre-configured commodity.'
+      },
+      laggards: {
+        title: 'Laggards (16%) — Moore’s "Sceptics"',
+        desc: 'Traditionalists suspicious of change who only adopt when a technology is buried invisibly inside a standard appliance (e.g. microprocessors inside a microwave).'
+      }
     };
 
     function selectAdopter(key) {
@@ -836,12 +956,12 @@
     }
 
     const BANK_SORTER_TASKS = [
-      { id: 's1', task: 'Historical customer credit data, payment rails & retail bank brand', correct: 'shared', why: 'Fits the Performance Engine’s existing assets and established relationships.' },
-      { id: 's2', task: 'ML engineering, feature pipeline, model drift & fairness monitoring', correct: 'dedicated', why: 'Requires new capabilities, outside data science hires, and non-routine workflows built from scratch.' },
-      { id: 's3', task: 'Statutory banking licence & standard FCA/PRA regulatory compliance', correct: 'shared', why: 'Repeatable legal/compliance competency already handled by the Performance Engine.' },
-      { id: 's4', task: 'New 3-minute digital SME loan UX & automated underwriting workflow', correct: 'dedicated', why: 'Conflicts with traditional branch relationship-manager routines; must live in the Dedicated Team.' },
-      { id: 's5', task: 'Running a small pilot hypothesis test on loans <£10k ("Spend a little, learn a lot")', correct: 'dedicated', why: 'Disciplined experiment judged on learning velocity (default rate vs predictions), insulated from branch lending KPIs.' },
-      { id: 's6', task: 'Back-office treasury liquidity & fund disbursement', correct: 'shared', why: 'Standard repeatable banking operation.' }
+      { id: 's1', task: 'Historical SME credit histories, core banking ledger & trusted retail brand', correct: 'shared', why: 'Fits the Performance Engine’s existing assets and established customer relationships.' },
+      { id: 's2', task: 'ML feature engineering, model training, fairness & concept-drift monitoring', correct: 'dedicated', why: 'Requires new capabilities, outside data science hires, and non-routine workflows built from scratch.' },
+      { id: 's3', task: 'Statutory banking licence, KYC/AML checks & FCA/PRA regulatory reporting', correct: 'shared', why: 'Repeatable legal/compliance competency already handled at scale by the Performance Engine.' },
+      { id: 's4', task: 'New 3-minute digital SME application UX & automated underwriting workflow', correct: 'dedicated', why: 'Directly conflicts with traditional branch relationship-manager routines; must live in the Dedicated Team.' },
+      { id: 's5', task: 'Running a bounded pilot hypothesis test on loans <£10k ("Spend a little, learn a lot")', correct: 'dedicated', why: 'Disciplined experiment judged on learning velocity (predicted vs actual defaults), insulated from quarterly branch lending KPIs.' },
+      { id: 's6', task: 'Back-office treasury liquidity & BACS/Faster Payments disbursement', correct: 'shared', why: 'Standard repeatable banking infrastructure operation.' }
     ];
     let sorterChoices = {};
 
@@ -861,7 +981,7 @@
                 <button onclick="pickSorter('${item.id}', 'dedicated')" class="${picked === 'dedicated' ? 'btn-primary' : ''}">Dedicated Team</button>
               </div>
             </div>
-            ${picked ? `<div style="margin-top:6px; color:${ok ? 'var(--emerald)' : 'var(--rose)'};"><strong>${ok ? '✓ Correct:' : '✗ Check Rubric:'}</strong> ${item.why}</div>` : ''}
+            ${picked ? `<div style="margin-top:6px; color:${ok ? 'var(--emerald)' : 'var(--rose)'};"><strong>${ok ? '[Correct]' : '[Review Rubric]'}</strong> ${item.why}</div>` : ''}
           </div>
         `;
       }).join('');
@@ -875,10 +995,10 @@
 
     // THEME 4
     const IP_AUDIT_ITEMS = [
-      { id: 'ip1', item: '1. Ranking service built from a published academic paper (cf. Brin & Page 1998)', correct: 'investigate', why: 'INVESTIGATE: Copyright only protects the paper’s text, not the ranking idea — BUT you must search for active territorial patents (like Stanford’s US6285999B1) before commercial launch!' },
-      { id: 'ip2', item: '2. Source code brought by a founder from their former employer', correct: 'replace', why: 'REPLACE: Under UK law (CDPA 1988) and Faccenda Chicken / Vestergaard, employer owns employee-written code and trade secrets. Using it risks injunctions; rewrite via clean-room code.' },
-      { id: 'ip3', item: '3. Creative Commons Attribution-NonCommercial (CC BY-NC) photos in paid product', correct: 'replace', why: 'REPLACE (or buy commercial licence): NonCommercial terms strictly forbid use in a paid product, and recreating the exact photo composition breaches copyright (Temple Island Red Bus case).' },
-      { id: 'ip4', item: '4. Start-up’s new clean-room code, tuned model weights & brand name', correct: 'protect', why: 'PROTECT: Automatic copyright for clean-room code; Trade Secrets (NDAs, access controls) for internal ranking weights/datasets; Trademarks for brand.' }
+      { id: 'ip1', item: '1. Ranking algorithm implemented from a published academic paper (cf. Brin & Page 1998)', correct: 'investigate', why: 'INVESTIGATE: Copyright only covers the paper’s prose text, not the underlying mathematical idea — BUT you must perform a freedom-to-operate patent search (Stanford held US Patent US6285999B1 on PageRank!).' },
+      { id: 'ip2', item: '2. Source code brought by a co-founder from their former employer', correct: 'replace', why: 'REPLACE: Under UK CDPA 1988 and Faccenda Chicken / Vestergaard, an employer owns code written in the course of employment and high-grade trade secrets. Quarantine immediately and rewrite via clean-room implementation.' },
+      { id: 'ip3', item: '3. Creative Commons Attribution-NonCommercial (CC BY-NC) photographs in a paid product', correct: 'replace', why: 'REPLACE (or negotiate a commercial licence): CC BY-NC strictly prohibits commercial revenue use, and recreating the exact photo composition still infringes copyright (Temple Island Red Bus case).' },
+      { id: 'ip4', item: '4. Start-up’s new clean-room codebase, proprietary ranking weights & brand identity', correct: 'protect', why: 'PROTECT: Automatic copyright + licence headers for clean-room code; Trade Secrets (NDAs, access logs, encryption) for proprietary model weights/datasets; Trademark registration for brand name/logo.' }
     ];
     let ipAuditChoices = {};
 
@@ -899,11 +1019,11 @@
                 <button onclick="pickIpAudit('${x.id}', 'protect')" class="${picked === 'protect' ? 'btn-primary' : ''}">Protect</button>
               </div>
             </div>
-            ${picked ? `<div style="margin-top:6px; color:${ok ? 'var(--emerald)' : 'var(--rose)'};"><strong>${ok ? '✓ Correct:' : '✗ Check Seminar Slide 8:'}</strong> ${x.why}</div>` : ''}
+            ${picked ? `<div style="margin-top:6px; color:${ok ? 'var(--emerald)' : 'var(--rose)'};"><strong>${ok ? '[Correct]' : '[Check Slide 8]'}</strong> ${x.why}</div>` : ''}
           </div>
         `;
       }).join('');
-      document.getElementById('ip-audit-score').textContent = `${correctCount} / 4 Correct`;
+      document.getElementById('ip-audit-score').textContent = `${correctCount} / 4 Audited`;
     }
 
     function pickIpAudit(id, choice) {
@@ -913,23 +1033,23 @@
 
     const LEGAL_TOPICS = {
       ai_tiers: {
-        title: 'EU AI Act (Regulation (EU) 2024/1689) — 4 Risk Tiers & Extraterritorial Scope',
+        title: 'EU AI Act (Regulation (EU) 2024/1689) — Extraterritorial Scope & 4 Risk Tiers',
         html: `
           <ul class="clean-list">
-            <li><strong>Extraterritorial Scope (Art. 2):</strong> Applies to non-EU suppliers (e.g. a <em>UK software vendor</em>) if their AI system is placed on the EU market or its output is used in the EU!</li>
-            <li><strong>1. Unacceptable Risk (Art. 5 — BANNED):</strong> Subliminal cognitive manipulation, social scoring, untargeted facial scraping, real-time public biometric ID.</li>
-            <li><strong>2. High-Risk (Art. 6 &amp; Annex III — STRICT EX-ANTE COMPLIANCE):</strong> Includes <strong>Annex III Point 2 (Critical Infrastructure: road traffic safety components)</strong> and <strong>Annex III Point 3 (Education: university admissions ranking &amp; exam scoring)</strong>, plus HR recruitment, creditworthiness, and policing.</li>
-            <li><strong>3. General Purpose AI / Foundation Models (Arts. 51–55):</strong> Training data summary disclosure, copyright policy, and systemic risk adversarial testing (&gt;10<sup>25</sup> FLOPs).</li>
-            <li><strong>4. Specific Transparency / Minimal Risk (Art. 50):</strong> Chatbots &amp; deepfakes must disclose artificial generation; spam filters/games have minimal rules.</li>
+            <li><strong>Extraterritorial Scope (Art. 2):</strong> Applies to non-EU providers (e.g. a <em>UK software vendor</em>) whenever their AI system is placed on the EU market or its output is used inside the EU.</li>
+            <li><strong>1. Unacceptable Risk (Art. 5 — PROHIBITED):</strong> Subliminal manipulation causing harm, social scoring, untargeted scraping of facial images, emotion recognition in workplaces/schools, real-time public biometric identification (subject to narrow law-enforcement exceptions).</li>
+            <li><strong>2. High-Risk AI (Art. 6 &amp; Annex III — STRICT EX-ANTE COMPLIANCE):</strong> Includes <strong>Annex III Point 2 (Critical Infrastructure: road traffic management safety components)</strong> and <strong>Annex III Point 3 (Education &amp; Vocational Training: university admissions ranking &amp; exam scoring)</strong>, plus recruitment, credit scoring, and policing.</li>
+            <li><strong>3. General Purpose AI / GPAI Models (Arts. 51&ndash;55):</strong> Technical documentation, copyright compliance policy, training data summary; systemic-risk GPAI (&gt;10<sup>25</sup> FLOPs) requires adversarial red-teaming and incident reporting.</li>
+            <li><strong>4. Specific Transparency / Minimal Risk (Art. 50):</strong> Chatbots must disclose human-AI interaction; deepfakes must be machine-readably watermarked; spam filters and video games face minimal regulation.</li>
           </ul>
         `
       },
       roles: {
-        title: 'EU AI Act Supply-Chain Split: Provider (UK Supplier) vs. Deployer (EU University / Road Authority)',
+        title: 'EU AI Act Value-Chain Split: Provider (UK Supplier) vs. Deployer (EU University / Road Authority)',
         html: `
           <ul class="clean-list">
-            <li><strong>Provider Responsibilities (Developer/Supplier placing High-Risk AI on market):</strong> Continuous risk management system, training/validation data governance &amp; bias mitigation, technical documentation, automatic event logging capability, human-oversight interface design, ex-ante conformity assessment, CE marking.</li>
-            <li><strong>Deployer Responsibilities (EU University or EU Road Authority using the system):</strong> Follow instructions of use, assign <strong>competent, trained natural persons for human oversight</strong> (with authority &amp; capability to override or stop the AI), monitor logs, ensure input data relevance, inform affected people, and (for public bodies/universities) complete a <strong>Fundamental Rights Impact Assessment (FRIA)</strong>.</li>
+            <li><strong>Provider Duties (Developer/Supplier placing High-Risk AI on the EU market — Art. 16):</strong> Continuous risk management system (Art. 9), training/validation/test data governance &amp; bias examination (Art. 10), technical documentation (Art. 11), automatic event logging capability (Art. 12), transparent instructions &amp; human-oversight interface design (Arts. 13&ndash;14), accuracy/robustness/cybersecurity (Art. 15), conformity assessment, CE marking, and appointing an EU Authorised Representative.</li>
+            <li><strong>Deployer Duties (EU University or EU Road Authority using High-Risk AI — Art. 26):</strong> Operate in accordance with instructions of use, assign <strong>competent, trained natural persons for human oversight</strong> (with real authority and technical capability to override or halt the system), ensure input data relevance, monitor operation &amp; retain logs, inform affected individuals, and (for public bodies / universities) complete a <strong>Fundamental Rights Impact Assessment (FRIA, Art. 27)</strong>.</li>
           </ul>
         `
       },
@@ -937,20 +1057,21 @@
         title: 'UK GDPR & The Data (Use and Access) Act 2025 (DUAA) — Automated Decision-Making',
         html: `
           <ul class="clean-list">
-            <li><strong>DUAA 2025 vs. EU GDPR:</strong> DUAA 2025 amends the <em>UK GDPR</em> (it does not replace UK GDPR, and does not apply to EU GDPR).</li>
-            <li><strong>Wider Permission for Ordinary Personal Data:</strong> Under UK DUAA 2025, significant solely automated decisions (e.g. closing an online retail account or rejecting a university applicant) using <em>non-special category (ordinary) personal data</em> can rely on any valid lawful basis (such as legitimate interests), <strong>PROVIDED 3 mandatory safeguards exist:</strong>
-              <br/>1. <em>Proactive Notification:</em> Tell the individual a significant automated decision was made.
-              <br/>2. <em>Right to Make Representations:</em> Provide a clear channel to contest the decision and submit context.
-              <br/>3. <em>Meaningful Human Intervention:</em> Genuine review by a qualified human with authority to overturn the model.</li>
+            <li><strong>Statutory Relationship:</strong> The DUAA 2025 amends the <em>UK GDPR</em> and Data Protection Act 2018 (it does not replace the UK GDPR, and does not alter the EU GDPR).</li>
+            <li><strong>Relaxed Threshold for Ordinary Personal Data + Mandatory Safeguards:</strong> Under DUAA 2025, significant solely automated decisions (such as automatically rejecting a university applicant or closing a customer’s retail account) based on <em>non-special category (ordinary) personal data</em> are permitted under any valid lawful basis (e.g. legitimate interests), <strong>PROVIDED the controller implements four mandatory safeguards:</strong>
+              <br/>1. <em>Proactive Information:</em> Notify the data subject that a significant solely automated decision has been taken.
+              <br/>2. <em>Right to Make Representations:</em> Allow the individual to submit additional context or mitigating factors.
+              <br/>3. <em>Right to Contest:</em> Provide an accessible mechanism to challenge the automated outcome.
+              <br/>4. <em>Meaningful Human Intervention:</em> Ensure a qualified human reviewer with authority to overturn the model examines the case (rubber-stamping or restricting review to applicant-identified input data typos is unlawful).</li>
           </ul>
         `
       },
       proport: {
-        title: 'Proportionality in AI Regulation: Teichmann vs. Ebers (2024)',
+        title: 'Proportionality in AI Governance: Teichmann vs. Martin Ebers (2024)',
         html: `
           <ul class="clean-list">
-            <li><strong>Teichmann (Ex-Ante Precaution &amp; Residual Harm):</strong> Emphasises protecting vulnerable groups against severe or irreversible residual harm (e.g. pedestrian casualties in AI traffic control, or wrongful exclusion from university). Justifies strict ex-ante subgroup testing, human overrides, and delaying deployment until residual risk is controlled.</li>
-            <li><strong>Martin Ebers (2024) (Truly Risk-Based Granularity &amp; Opportunity Cost):</strong> Critiques the EU AI Act’s rigid Annex III classification for imposing heavy ex-ante compliance burdens without weighing the <strong>benefits of AI and the opportunity cost of delay/non-use</strong> (e.g. faster journeys, lower emissions, or more consistent admissions triage than tired human markers). Advocates proportionate phased pilots / shadow-mode trials.</li>
+            <li><strong>Teichmann (Ex-Ante Precaution &amp; Residual Harm Control):</strong> Focuses on how ex-ante regulatory controls must scale with the severity and irreversibility of foreseeable <strong>residual harm</strong> (e.g. physical injury in urban traffic control or wrongful denial of higher education). Where an AI system remains an opaque black box with unquantified subgroup bias, strict ex-ante gates and human-in-the-loop overrides are essential.</li>
+            <li><strong>Martin Ebers (2024, <em>Truly Risk-Based Regulation of AI</em>):</strong> Critiques the EU AI Act’s static, list-based Annex III classification for treating all applications in a sector as uniformly high-risk without weighing <strong>the societal benefits of AI, compliance costs for SMEs, and the opportunity cost of delaying or not using AI</strong> (e.g. noisy, fatigued human admissions markers or congested, high-emission urban roads). Advocates dynamic, context-specific proportionality (such as shadow-mode trials and tiered triage).</li>
           </ul>
         `
       }
@@ -981,13 +1102,31 @@
           </ul>
         `,
         rubric: [
-          { pts: 4, text: 'Perez: Outlines the concept of major technological revolutions / 5 surges (Industrial Rev, Steam, Steel, Mass Production, ICT).' },
-          { pts: 4, text: 'Perez: Explains the Two-Phase Model: Installation period (financial capital dominance, bubbles) → Turning Point crash → Deployment period (production capital, "Golden Age").' },
-          { pts: 2, text: 'Perez: Explains the functional role of financial speculation & bubbles in building infrastructure (+ notes current ICT maturity).' },
-          { pts: 3, text: 'Christensen: Distinguishes sustaining innovation (better for mainstream) vs disruptive innovation (initially inferior, cheaper/simpler, low-end or new-market foothold).' },
-          { pts: 2, text: 'Christensen: Explains why rational incumbents fail (allocating resources to existing high-margin customers).' },
-          { pts: 2, text: 'Christensen: Explains how disruptors improve over time to capture the mainstream market (+ optional nod to Birkinshaw/Lepore critiques).' },
-          { pts: 3, text: 'CRITICAL CONTRAST: Contrasts Christensen (microeconomic firm-level competition) with Perez (macroeconomic historical surges & financial vs production capital).' }
+          { pts: 4, text: 'Perez: Defines techno-economic paradigms and outlines the 5 historical surges (1771 Industrial Rev, 1829 Steam/Railways, 1875 Steel/Electricity, 1908 Oil/Mass Production, 1971 ICT).' },
+          { pts: 4, text: 'Perez: Explains the Two-Phase Wave: Installation period (Irruption -> Frenzy, dominated by Financial Capital & Creative Destruction) -> Turning Point crash -> Deployment period (Synergy/Golden Age -> Maturity, dominated by Production Capital).' },
+          { pts: 2, text: 'Perez: Explains the functional role of speculative bubbles in financing foundational infrastructure (canals, railways, dark fibre) + notes current ICT/AI maturity.' },
+          { pts: 3, text: 'Christensen: Distinguishes sustaining innovation (improving mainstream metrics) vs disruptive innovation (initially inferior, cheaper/simpler, entering via low-end or new-market footholds; disk drives / minimill steel).' },
+          { pts: 2, text: 'Christensen: Explains performance oversupply and why rational incumbents fail by allocating resources to high-margin existing customers (+ autonomous spin-off prescription).' },
+          { pts: 2, text: 'Christensen: Explains how entrants iterate upmarket to capture mainstream volume (+ brief nod to Birkinshaw/Lepore/Shaughnessy critiques).' },
+          { pts: 3, text: 'CRITICAL CONTRAST: Explicitly contrasts Christensen (microeconomic firm-level product/business-model competition) with Perez (macroeconomic 50-year structural surges, financial vs production capital, and state institutional resets).' }
+        ]
+      },
+      t1sem: {
+        title: 'Theme 1 Official Seminar Prompt (Week 2 Slide 19 — 20 Marks, 20 Mins)',
+        prompt: `
+          <p class="bold">Critically evaluate the categorisation of technological innovation and incumbent strategy:</p>
+          <ul class="clean-list" style="margin-top:6px;">
+            <li><strong>Part (a):</strong> Do you believe innovation can be neatly categorised into "disruptive" and "sustaining"? Evaluate Christensen’s dichotomy using its major academic critics (Lepore, Shaughnessy, Weeks, Henderson &amp; Clark, Edgerton). <em>(~10 marks)</em></li>
+            <li><strong>Part (b):</strong> Do you believe there is a single model for company success? Using Julian Birkinshaw’s framework, explain how established companies should diagnose and respond to technological challengers. <em>(~10 marks)</em></li>
+          </ul>
+        `,
+        rubric: [
+          { pts: 3, text: 'Defines Christensen’s Sustaining vs Disruptive dichotomy (low-end and new-market footholds, performance oversupply, disk drive & minimill steel examples).' },
+          { pts: 4, text: 'Critiques the dichotomy: Shaughnessy (Apple iPhone top-down platform ecosystem anomaly & tautology/falsifiability deficit), Lepore (hand-picked survivorship bias, Seagate surviving), and Weeks (conflating technical vs business-model innovation).' },
+          { pts: 3, text: 'Alternative Taxonomies: Cites Henderson & Clark (modular vs architectural innovation) and David Edgerton (Shock of the Old: technologies-in-use, maintenance, and killing bad R&D ideas early).' },
+          { pts: 4, text: 'Birkinshaw’s 3 Myths: Refutes universal threat (Global 500 stability; regulated/asset-heavy moats vs TMT/retail), instant speed (20–30 year transitions), and incumbent helplessness.' },
+          { pts: 4, text: 'Birkinshaw’s 2x2 Strategic Response Matrix: Explains Retrench (defend existing niche), Double Down (offence in existing market), Move Away (diversify), and Fight Back (co-opt, acquire, or launch an autonomous spin-off).' },
+          { pts: 2, text: 'Synthesis: Concludes there is no universal one-size-fits-all recipe; strategy must match industry appropriability, regulatory moats, and transition speed.' }
         ]
       },
       t2q1: {
@@ -1000,13 +1139,13 @@
           </ul>
         `,
         rubric: [
-          { pts: 2, text: 'Rogers: Defines diffusion & its 4 elements: (1) innovation, (2) communication channels, (3) over time, (4) social system.' },
-          { pts: 3, text: 'Rogers: Explains the 5 perceived attributes: relative advantage, compatibility, complexity (simplicity), trialability, observability.' },
-          { pts: 3, text: 'Rogers: Lists the 5 adopter categories & proportions from normal distribution: Innovators (2.5%), Early Adopters (13.5%), Early Majority (34%), Late Majority (34%), Laggards (16%).' },
-          { pts: 2, text: 'Rogers: Explains the S-shaped cumulative adoption curve and critical mass.' },
-          { pts: 3, text: 'Moore: Locates the Chasm between Visionaries (Early Adopters) and Pragmatists (Early Majority), noting Pragmatists want complete solutions & only trust Pragmatist references.' },
-          { pts: 3, text: 'Moore: Describes the D-Day Beachhead strategy: target 1 narrow niche with acute pain, deliver the "Whole Product", win adjacent bowling-alley niches before Tornado & Main Street.' },
-          { pts: 4, text: 'CRITICAL CONTRAST: Contrasts Rogers (continuous, descriptive sociological curve across domains) with Moore (discontinuous gaps, prescriptive marketing strategy specific to high-tech).' }
+          { pts: 2, text: 'Rogers: Defines diffusion & its 4 elements: (1) an innovation, (2) communicated through channels, (3) over time, (4) among members of a social system.' },
+          { pts: 3, text: 'Rogers: Explains the 5 perceived attributes: relative advantage, compatibility, complexity (inverse), trialability, observability.' },
+          { pts: 3, text: 'Rogers: Lists the 5 adopter categories & normal distribution proportions: Innovators (2.5%), Early Adopters (13.5%), Early Majority (34%), Late Majority (34%), Laggards (16%).' },
+          { pts: 2, text: 'Rogers: Explains the S-shaped cumulative adoption curve and critical mass (+ bonus for opinion leaders, homophily vs heterophily, or re-invention).' },
+          { pts: 3, text: 'Moore: Locates the Chasm between Visionaries (Early Adopters) and Pragmatists (Early Majority), explaining that Pragmatists want evolutionary continuity, complete solutions, and only trust Pragmatist peer references.' },
+          { pts: 3, text: 'Moore: Describes the crossing strategy: target 1 narrow Beachhead niche (D-Day analogy), deliver the "Whole Product", and expand into adjacent "Bowling Alley" niches before the Tornado & Main Street.' },
+          { pts: 4, text: 'CRITICAL CONTRAST: Contrasts Rogers (smooth, continuous sociological description across agriculture/medicine/consumer goods) with Moore (discontinuous high-tech B2B gaps, prescriptive marketing playbook; optional nod to Debi Andrus critique).' }
         ]
       },
       t2q2: {
@@ -1019,14 +1158,14 @@
           </ul>
         `,
         rubric: [
-          { pts: 2, text: 'Theory: Performance Engine is built for repeatable efficiency, whereas innovation is non-routine and uncertain — so conflict is inevitable.' },
-          { pts: 2, text: 'Theory: Performance Engine can only handle incremental efforts; lone "rebel" leaders fighting the organisation fail.' },
-          { pts: 3, text: 'Theory (Organising): Project Team = Dedicated Team + Shared Staff. Shared Staff does only what fits existing routines; Dedicated Team is built from scratch (new roles, metrics) under a supervising executive.' },
-          { pts: 3, text: 'Theory (Planning): Disciplined experiment — custom "Hypothesis of Record", explicit assumptions, "spend a little, learn a lot", hold leaders accountable for learning velocity.' },
-          { pts: 2, text: 'Bank Case: Identifies the bank’s Performance Engine (branch lending, credit risk committees, manual underwriting, compliance KPIs) and why the ML model threatens it.' },
-          { pts: 3, text: 'Bank Case: Proposes justified split — Shared Staff (brand, customer data, regulatory compliance, payment rails) vs Dedicated Team (ML engineering, data science, drift monitoring, new digital UX).' },
-          { pts: 2, text: 'Bank Case: Explains how the Dedicated Team has distinct metrics and how a supervising executive resolves conflicts with Shared Staff.' },
-          { pts: 3, text: 'Bank Case: Outlines a disciplined pilot experiment with explicit testable assumptions (default rate, approval volume, algorithmic bias/fairness, model drift).' }
+          { pts: 2, text: 'Theory: Performance Engine is built for repeatable efficiency and predictable KPIs, whereas innovation is non-routine and uncertain — making conflict inevitable.' },
+          { pts: 2, text: 'Theory: Performance Engine can only execute incremental improvements on its own; lone "rebel" leaders fighting existing routines fail.' },
+          { pts: 3, text: 'Theory (Organising): Project Team = Dedicated Team + Shared Staff. Shared Staff do only what fits existing routines; Dedicated Team is built from scratch (new roles, outside hires, distinct metrics) under a supervising executive.' },
+          { pts: 3, text: 'Theory (Planning): Treat the project as a disciplined experiment — custom plan ("Hypothesis of Record"), explicit assumptions, "spend a little, learn a lot", and evaluate leaders on learning velocity.' },
+          { pts: 2, text: 'Bank Case: Identifies the bank’s Performance Engine (branch relationship managers, manual credit committees, risk/compliance routines) and why 3-minute ML underwriting threatens it.' },
+          { pts: 3, text: 'Bank Case: Proposes a justified Partnership Split — Shared Staff (brand, historical credit data, KYC/FCA compliance, payment rails) vs Dedicated Team (ML engineers, feature pipeline, drift monitoring, new digital SME UX).' },
+          { pts: 2, text: 'Bank Case: Explains how the Dedicated Team operates on distinct metrics and reports to a senior supervising executive who arbitrates resource/compliance tensions.' },
+          { pts: 3, text: 'Bank Case: Outlines a bounded pilot experiment (e.g. loans <£10k in one region) testing explicit hypotheses on default rates, adverse selection, algorithmic fairness, and concept drift.' }
         ]
       },
       t3: {
@@ -1034,16 +1173,16 @@
         prompt: `
           <p class="bold">"In the future, which approaches to organising and financing innovation are likely to be most effective?"</p>
           <ul class="clean-list" style="margin-top:6px;">
-            <li>Make a clear, justified claim covering both <strong>Organising</strong> (Centralised R&amp;D vs. Open Innovation vs. Hybrid) and <strong>Financing/Scaling</strong> (State vs. Private VC; Lean Startup vs. Blitzscaling).</li>
+            <li>Make a clear, justified claim covering both <strong>Organising</strong> (Centralised R&amp;D vs. Open Innovation vs. Structural Ambidexterity) and <strong>Financing/Scaling</strong> (Entrepreneurial State vs. Private VC; Lean Startup vs. Blitzscaling).</li>
             <li>Use at least two cases/theories (Bell Labs, Xerox PARC, Chesbrough, Mazzucato vs. Westlake, Ries vs. Hoffman/Kuratko) and evaluate a competing perspective.</li>
           </ul>
         `,
         rubric: [
-          { pts: 4, text: 'Clear Thesis & Structure: Defends a specific conditional position (e.g. Hybrid Ambidextrous R&D + Stage-Matched Public-Private Financing) rather than a vague list.' },
-          { pts: 4, text: 'Organising Evidence: Compares Centralised Labs (Bell Labs breakthroughs vs Xerox PARC commercial spillover/appropriability failure) with Chesbrough’s Open Innovation.' },
-          { pts: 3, text: 'Hybrid Specification: Clearly defines what stays internal (core IP, long-term moonshots) vs external (acquisitions, ecosystem standards).' },
-          { pts: 5, text: 'Financing Debate: Contrasts Mazzucato (Entrepreneurial State de-risking TRL 1–4 in iPhone/Internet) with Westlake’s critique (intangible assets, state white elephants like Concorde, downstream execution risk).' },
-          { pts: 4, text: 'Execution & Scaling Critique: Weighs Ries’s Lean Startup (validated learning/MVP) against Hoffman’s Blitzscaling and Kuratko et al.’s warning on governance/unit-economics collapse (WeWork/Theranos).' }
+          { pts: 4, text: 'Clear Thesis & Structure: Defends a specific conditional position (e.g. Structurally Ambidextrous Hybrid R&D + Stage-Matched Public-Private Financing) rather than an uncritical summary.' },
+          { pts: 4, text: 'Organising Evidence: Compares Centralised Corporate Labs (Bell Labs breakthroughs vs Xerox PARC GUI spillover caused by core rigidity, Henderson & Clark architectural filtering, and Teece’s complementary assets) with Chesbrough’s Open Innovation.' },
+          { pts: 3, text: 'Hybrid Boundary Specification (Slide 6 Rule): Explicitly defines what stays internal (safety-critical IP, proprietary weights, moonshots via O’Reilly & Tushman ambidexterity) vs external (inbound startup acquisitions, outbound open-source standards).' },
+          { pts: 5, text: 'Financing Debate: Contrasts Mazzucato’s Entrepreneurial State (DARPA/NSF funding TRL 1–4 in the iPhone; critique of socialising risk while privatising reward) with Westlake’s rebuttal (intangible non-R&D assets, state white elephants like Concorde, downstream commercial risk).' },
+          { pts: 4, text: 'Execution & Scaling Critique: Weighs Ries’s Lean Startup (MVP Build-Measure-Learn validated learning) against Hoffman’s Blitzscaling and Kuratko et al.’s critique of unit-economics/governance collapse (Flexport vs WeWork/Theranos).' }
         ]
       },
       t4: {
@@ -1057,26 +1196,28 @@
           </ul>
         `,
         rubric: [
-          { pts: 3, text: 'EU Classification & Scope: Extraterritorial scope (Art. 2) captures the UK supplier selling into the EU; classified as High-Risk AI under Art. 6 & Annex III Point 3 (Education admissions).' },
-          { pts: 4, text: 'Provider vs Deployer Duties: UK supplier (Provider) must do risk management, bias/data governance, documentation, logging, conformity assessment. EU universities (Deployers) must assign competent human oversight, monitor logs, notify applicants, and complete a Fundamental Rights Impact Assessment (FRIA).' },
-          { pts: 3, text: 'UK DUAA 2025 Diagnosis: Clarifies DUAA 2025 amends UK GDPR; automatic rejection has a significant effect; ordinary personal data is permitted under a lawful basis ONLY with mandatory statutory safeguards.' },
-          { pts: 4, text: 'Critique of "Data-Error-Only" Review: Explains why restricting human review to applicant-identified input data errors violates DUAA safeguards (applicants cannot see opaque feature weights; right to representations & meaningful human intervention covers unfair algorithmic inference, not just typos).' },
-          { pts: 6, text: 'Proportionality Synthesis (Teichmann vs Ebers): Contrasts Teichmann (ex-ante protection against severe residual harm of educational exclusion) with Ebers (weighing efficiency benefits & opportunity costs), proposing automated triage for clear cases + unconditional human review & bias audits for borderline/rejected applicants.' }
+          { pts: 3, text: 'EU Classification & Scope: Extraterritorial scope (Art. 2) captures the UK supplier selling into the EU; classified as High-Risk AI under Art. 6 & Annex III Point 3 (Education admissions access).' },
+          { pts: 4, text: 'Provider vs Deployer Duties: UK supplier (Provider) must implement risk management, training data governance/bias mitigation, technical documentation, logging, human-oversight design, conformity assessment & CE mark. EU universities (Deployers) must assign competent human oversight, monitor logs, inform applicants, and complete a Fundamental Rights Impact Assessment (FRIA).' },
+          { pts: 3, text: 'UK DUAA 2025 Diagnosis: Clarifies DUAA 2025 amends UK GDPR; automatic admissions rejection is a significant solely automated decision; using ordinary personal data is permitted under a valid lawful basis ONLY if mandatory statutory safeguards are met.' },
+          { pts: 4, text: 'Critique of "Data-Error-Only" Review: Explains why restricting human review to applicant-identified input data errors violates DUAA safeguards (applicants cannot inspect proprietary model weights; the right to make representations, contest decisions, and obtain meaningful human intervention covers unfair algorithmic inference and proxy bias, not just clerical typos).' },
+          { pts: 6, text: 'Proportionality Synthesis (Teichmann vs Ebers): Contrasts Teichmann (ex-ante protection against severe residual harm of educational exclusion) with Ebers (weighing administrative efficiency & opportunity cost of noisy human marking), proposing a proportionate tiered system: automated triage for clear cases + unconditional human review & subgroup bias audits for borderline/rejected applicants.' }
         ]
       }
     };
 
     const FLASHCARDS = [
-      { q: '1. [Theme 1] Perez vs. Christensen: What level of analysis does each operate on?', a: 'Perez operates at the MACROECONOMIC level (50–60 yr techno-economic surges driven by Financial Capital bubbles followed by Production Capital Golden Ages). Christensen operates at the MICROECONOMIC firm level (incumbents losing to low-end/new-market disruptors).' },
-      { q: '2. [Theme 1] How do Birkinshaw, Lepore, and Shaughnessy critique Christensen?', a: 'Birkinshaw shows incumbents survive via moats & 4 responses; Lepore exposes hand-picked survivorship bias; Shaughnessy notes Christensen wrongly predicted the iPhone would fail because he missed platform ecosystems.' },
-      { q: '3. [Theme 2] Rogers vs. Moore: How does Moore’s Chasm depart from Rogers’ Diffusion curve?', a: 'Rogers presents a smooth, continuous sociological curve across 5 adopter categories driven by 5 perceived attributes. Moore identifies a dangerous high-tech discontinuity (The Chasm) between Visionaries and Pragmatists, requiring a narrow D-Day Beachhead niche + Whole Product.' },
-      { q: '4. [Theme 2] Govindarajan & Trimble: How should a bank organise and plan an instant ML loan model?', a: 'Pair Shared Staff from the Performance Engine (customer data, compliance, payment rails) with a Dedicated Team built from scratch (ML engineers, new digital UX, learning KPIs) under a supervising executive, running a disciplined pilot ("Hypothesis of Record", spend a little/learn a lot).' },
-      { q: '5. [Theme 3] Why did Xerox PARC fail to capture value from the GUI & Ethernet, and how does Open Innovation respond?', a: 'PARC suffered from core rigidity (copier identity), architectural filtering, and missing complementary assets (Teece). Chesbrough’s Open Innovation uses porous boundaries (inbound acquisitions/licensing + outbound spinouts/open standards) to monetise internal and external ideas.' },
-      { q: '6. [Theme 3] Mazzucato vs. Westlake: Who takes the real risk in financing innovation?', a: 'Mazzucato argues the Entrepreneurial State takes the highest early risk (TRL 1–4 in iPhone/GPS/Internet) and shouldn’t socialise risk while privatising rewards. Westlake counters that she ignores intangible business/design investment, state flops (Concorde), and massive private commercialisation risk.' },
-      { q: '7. [Theme 3] Eric Ries (Lean Startup) vs. Reid Hoffman (Blitzscaling) & Kuratko’s critique?', a: 'Ries prioritises capital-efficient Validated Learning (Build-Measure-Learn MVP loops). Hoffman prioritises speed over efficiency in winner-take-all network markets. Kuratko et al. warn blitzscaling without sound unit economics leads to governance collapse (WeWork, Theranos).' },
-      { q: '8. [Theme 4] Start-Up IP Audit: Published paper vs. Former employer code vs. CC BY-NC photos?', a: 'Investigate the published paper for active patents (Brin & Page paper was covered by Stanford patent US6285999B1!); Replace former employer code (Faccenda/Vestergaard trade secret & copyright breach) via clean-room code; Replace CC BY-NC photos in paid products (Temple Island Red Bus).' },
-      { q: '9. [Theme 4] Open Source: Eric Raymond’s Bazaar vs. Nadia Eghbal’s Working in Public?', a: 'Raymond’s idealised Bazaar claims "given enough eyeballs, all bugs are shallow." Eghbal shows modern open source is often a "Stadium" where 1–2 unpaid, burned-out maintainers support critical global infrastructure (exposed by Heartbleed, Log4j, XZ Utils).' },
-      { q: '10. [Theme 4] EU AI Act (Provider vs Deployer) + UK DUAA 2025 + Teichmann vs Ebers?', a: 'EU AI Act extraterritorially covers UK suppliers (Providers: data governance, logging, conformity) selling High-Risk Annex III AI (admissions, road traffic) to EU Deployers (human oversight, FRIA). UK DUAA 2025 allows automated decisions on ordinary data ONLY with notification, representations & meaningful human review (not rubber-stamping or data-error-only rules). Balance Teichmann (residual harm) with Ebers (efficiency/opportunity cost).' }
+      { q: '1. [Theme 0 & 1] Perez vs. Christensen: What level of analysis does each operate on?', a: 'Perez operates at the MACROECONOMIC historical scale (50–60 yr techno-economic surges driven by Financial Capital bubbles in Installation followed by Production Capital Golden Ages in Deployment). Christensen operates at the MICROECONOMIC firm scale (incumbents overshooting demand and losing to low-end or new-market disruptors).' },
+      { q: '2. [Theme 1] What are Christensen’s two canonical case studies and his organisational prescription?', a: 'Hard Disk Drives (14" -> 8" -> 5.25" -> 3.5") and Minimill Steel (Nucor entering low-margin rebar before moving upmarket into sheet steel against US Steel). Prescription: Spin off an autonomous organisation whose cost structure matches low margins and small initial markets.' },
+      { q: '3. [Theme 1] What are Julian Birkinshaw’s 3 Myths of Disruption and his 2x2 Strategic Matrix?', a: 'Myths: (1) Every sector is threatened (false: Global 500 is stable; pharma/banking have deep moats), (2) Disruption is rapid (false: takes 20–30 yrs), (3) Incumbents cannot adapt. Matrix (Existing vs New Market x Defence vs Offence): Retrench, Move Away, Double Down, Fight Back.' },
+      { q: '4. [Theme 1] How do Lepore, Shaughnessy, Henderson & Clark, and Edgerton critique disruption?', a: 'Lepore exposes hand-picked survivorship bias (Seagate survived) and warns against panic "auto-disruption". Shaughnessy highlights the iPhone platform ecosystem anomaly and tautology trap. Henderson & Clark distinguish modular vs architectural innovation. Edgerton (Shock of the Old) emphasises maintenance, technologies-in-use, and killing bad R&D ideas early.' },
+      { q: '5. [Theme 2] Rogers vs. Moore: How does Moore’s Chasm depart from Rogers’ Diffusion curve?', a: 'Rogers models a continuous, smooth sociological curve across 5 adopter categories driven by 5 attributes (Relative Advantage, Compatibility, Complexity, Trialability, Observability). Moore identifies a severe B2B high-tech discontinuity (The Chasm at 16%) between Visionaries and Pragmatists, requiring a narrow D-Day Beachhead niche + Whole Product -> Bowling Alley -> Tornado.' },
+      { q: '6. [Theme 2] Govindarajan & Trimble: How should a retail bank organise and plan an instant ML loan model?', a: 'Pair Shared Staff from the Performance Engine (customer data, FCA compliance, payment rails) with a Dedicated Team built from scratch (ML engineers, drift monitoring, new 3-min UX) under a supervising executive. Run a disciplined experiment with a formal "Hypothesis of Record" ("spend a little, learn a lot") judged on learning velocity.' },
+      { q: '7. [Theme 3] Why did Xerox PARC fail to commercialise the GUI, and how do Chesbrough and O’Reilly & Tushman solve this?', a: 'PARC suffered from core rigidity (copier identity), architectural filtering (Henderson & Clark), and missing complementary assets (Teece 1986). Chesbrough’s Open Innovation uses permeable boundaries (inbound licensing/acquisitions + outbound spinouts/open standards), while O’Reilly & Tushman’s Structural Ambidexterity separates exploratory moonshots from exploitative core units.' },
+      { q: '8. [Theme 3] Mazzucato vs. Westlake: Who takes the real risk in financing breakthrough innovation?', a: 'Mazzucato argues the Entrepreneurial State takes the highest early risk (DARPA/NSF funding TRL 1–4 in the iPhone/Internet/GPS) and critiques socialising risk while privatising rewards. Westlake counters that she ignores private intangible investment (design, supply chains), state flops (Concorde, Minitel), and massive downstream commercialisation risk.' },
+      { q: '9. [Theme 3] Eric Ries (Lean Startup) vs. Reid Hoffman (Blitzscaling) & Kuratko et al. (2020)?', a: 'Ries prioritises capital-efficient Validated Learning via Build-Measure-Learn MVP loops. Hoffman prioritises speed over efficiency to capture winner-take-all network effects. Kuratko et al. contrast valid blitzscaling (Flexport) with catastrophic governance and unit-economics collapse when moats are absent (WeWork, Uber, Zenefits, Theranos).' },
+      { q: '10. [Theme 4] Start-Up IP Audit (Slide 8): Published paper vs. Former employer code vs. CC BY-NC photos?', a: 'Investigate the published paper for active patents (Brin & Page paper was covered by Stanford patent US6285999B1!); Replace former employer code (Faccenda Chicken / Vestergaard trade secret & copyright breach) via clean-room implementation; Replace CC BY-NC photos in paid products (Temple Island Red Bus copyright case).' },
+      { q: '11. [Theme 4] Open Source: Eric Raymond’s Bazaar (1999) vs. Nadia Eghbal’s Working in Public (2020)?', a: 'Raymond’s Bazaar claims "given enough eyeballs, all bugs are shallow." Eghbal shows modern open source is rarely a Federation (Linux) and usually a "Stadium" (1–2 overworked solo maintainers supporting millions of free-riding users), creating severe infrastructure fragility (Heartbleed 2014, Log4j 2021, XZ Utils backdoor 2024).' },
+      { q: '12. [Theme 4] EU AI Act (Provider vs Deployer) + UK DUAA 2025 + Teichmann vs Ebers?', a: 'EU AI Act extraterritorially covers UK suppliers (Providers: risk/data governance, logging, conformity) selling High-Risk Annex III AI (Point 2 road traffic; Point 3 university admissions) to EU Deployers (competent human oversight, FRIA). UK DUAA 2025 permits automated decisions on ordinary data ONLY with notice, representations, contestability & meaningful human review (neither rubber-stamping nor data-error-only rules qualify). Balance Teichmann (residual harm) with Ebers (efficiency & opportunity cost).' }
     ];
 
     let currentQuestionKey = 't1';
@@ -1086,10 +1227,12 @@
 
     function selectMockQuestion(key) {
       currentQuestionKey = key;
-      ['t1', 't2q1', 't2q2', 't3', 't4', 'flash'].forEach(k => {
+      ['t1', 't1sem', 't2q1', 't2q2', 't3', 't4', 'flash'].forEach(k => {
         const b = document.getElementById('qbtn-' + k);
-        if (k === key) b.classList.add('btn-primary');
-        else b.classList.remove('btn-primary');
+        if (b) {
+          if (k === key) b.classList.add('btn-primary');
+          else b.classList.remove('btn-primary');
+        }
       });
 
       const ws = document.getElementById('mock-workspace');
@@ -1099,7 +1242,7 @@
       if (key === 'flash') {
         ws.classList.add('hidden');
         fv.classList.remove('hidden');
-        pb.innerHTML = `<div class="bold">🎯 All-Themes Active Recall Deck (10 High-Yield Cards — Click Any Card to Flip)</div>`;
+        pb.innerHTML = `<div class="bold">All-Themes Active Recall Deck (12 High-Yield Level 7 Cards &mdash; Click Any Card to Flip)</div>`;
         renderFlashcards();
         return;
       }
@@ -1177,7 +1320,7 @@
           <div onclick="flipCard(${idx})" class="subcard" style="cursor:pointer;">
             <div class="text-xs bold uppercase" style="color:var(--primary); margin-bottom:4px;">Click to Flip Card</div>
             <div class="bold text-sm">${c.q}</div>
-            ${open ? `<div class="text-xs" style="margin-top:10px; padding-top:8px; border-top:1px solid var(--border); color:var(--emerald);"><strong>Level 7 Answer:</strong> ${c.a}</div>` : `<div class="text-xs muted" style="margin-top:6px;">Tap to reveal answer...</div>`}
+            ${open ? `<div class="text-xs" style="margin-top:10px; padding-top:8px; border-top:1px solid var(--border); color:var(--emerald);"><strong>Level 7 Answer:</strong> ${c.a}</div>` : `<div class="text-xs muted" style="margin-top:6px;">Click to reveal answer...</div>`}
           </div>
         `;
       }).join('');
