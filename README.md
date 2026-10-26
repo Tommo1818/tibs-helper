@@ -1,10 +1,8 @@
-# TIBS Revision Helper — EMATM0049
+# TIBS Revision Helper
 
 > **Live Interactive Hub:** [https://tommo1818.github.io/tibs-helper/](https://tommo1818.github.io/tibs-helper/)  
-> **Course:** Technology, Innovation, Business, and Society (EMATM0049)  
-> **Programme:** MSc Data Science — University of Bristol  
+> **Course:** TIBS (Technology, Innovation, Business, and Society)  
 > **Exam Window:** Thursday 29 October 2026 • 10:00 AM – 12:00 PM  
-> **Venue:** Temple Quarter (TQ) Sloane Robinson 4.710 AL / 0.820 AL  
 > **Format:** Closed-Book 1.5h Written Examination (Paper-Based)
 
 ---
