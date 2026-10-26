@@ -171,6 +171,42 @@
     input[type="checkbox"] { accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
     ul.clean-list { padding-left: 18px; }
     ul.clean-list li { margin-bottom: 5px; }
+
+    .tooltip-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: help;
+      border-bottom: 1px dashed var(--muted);
+      padding-bottom: 1px;
+    }
+    .tooltip-box {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 8px);
+      width: 310px;
+      background-color: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.76rem;
+      font-weight: 400;
+      line-height: 1.45;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      z-index: 50;
+      pointer-events: none;
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+      text-transform: none;
+    }
+    .tooltip-wrap:hover .tooltip-box,
+    .tooltip-wrap:focus .tooltip-box {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -448,159 +484,123 @@
 
         <div class="subcard space-y-sm">
           <div class="flex-between">
-            <div>
-              <span class="text-xs bold uppercase muted">Rogers' 5 Perceived Attributes &amp; S-Curve Simulator</span>
-              <div class="text-xs muted" style="margin-top:2px;">Adjust the 5 psychological perceptions below to see how they reshape cumulative market adoption speed:</div>
-            </div>
+            <span class="tooltip-wrap text-xs bold uppercase muted" tabindex="0">
+              <span>Rogers' 5 Perceived Attributes Simulator</span>
+              <svg class="icon-svg" style="width:14px;height:14px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <span class="tooltip-box" style="width:340px;">
+                <strong>How to Read the S-Curve (Hover Guide):</strong><br/>
+                &bull; <strong>Bell Curve (left) vs. S-Curve (right):</strong> The Bell Curve shows <em>who</em> adopts at each slice in time; the S-Curve is the <em>running cumulative total</em> (0% &rarr; 100%).<br/>
+                &bull; <strong>Critical Mass (~16%):</strong> Once Techies (2.5%) + Visionaries (13.5%) adopt, peer word-of-mouth triggers steep exponential takeoff (where Moore's Chasm sits).<br/>
+                &bull; <strong>Exam Rule:</strong> Rogers found 49&ndash;87% of adoption speed is explained by how buyers <em>perceive</em> these 5 attributes (hover each attribute below for examples).
+              </span>
+            </span>
             <span id="adoption-score-badge" class="badge badge-emerald">Fast Viral Diffusion</span>
           </div>
 
+          <p class="text-xs muted">
+            <strong>4 Elements (2m):</strong> Innovation, communication channels, time, social system. <em>Hover any attribute below for plain-english definitions &amp; examples:</em>
+          </p>
+
           <div class="space-y-sm text-xs">
-            <div class="card" style="padding: 8px 12px;">
-              <div class="flex-between">
-                <div>
-                  <span class="bold" style="color:var(--emerald);">1. Relative Advantage (+)</span>
-                  <span class="muted" style="margin-left: 4px;">&mdash; "Is it dramatically better, faster, or cheaper?"</span>
-                </div>
-                <div class="flex-row" style="gap: 8px;">
-                  <input type="range" id="attr-rel" min="1" max="10" value="8" oninput="updateSCurve()" style="width:120px;" />
-                  <span id="val-rel" class="mono bold" style="width:18px; text-align:right;">8</span>
-                </div>
+            <div class="flex-between">
+              <label for="attr-rel" class="tooltip-wrap" tabindex="0">
+                <span class="semibold" style="color:var(--emerald);">1. Relative Advantage (+)</span>
+                <svg class="icon-svg" style="width:13px;height:13px;opacity:0.75;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span class="tooltip-box">
+                  <strong>"Is it dramatically better, faster, or cheaper than what I use now?"</strong><br/>
+                  The perceived superiority over the tool it replaces.<br/>
+                  <em>Examples:</em> Streaming vs. buying physical CDs; smartphone GPS vs. paper maps.
+                </span>
+              </label>
+              <div class="flex-row" style="gap:8px;">
+                <input type="range" id="attr-rel" min="1" max="10" value="8" oninput="updateSCurve()" style="width:150px;" />
+                <span id="val-rel" class="mono bold" style="width:18px;text-align:right;">8</span>
               </div>
-              <div class="muted text-xs" style="margin-top: 2px;">e.g. Streaming music vs. buying physical CDs; GPS smartphone routing vs. paper road maps.</div>
             </div>
 
-            <div class="card" style="padding: 8px 12px;">
-              <div class="flex-between">
-                <div>
-                  <span class="bold" style="color:var(--primary);">2. Compatibility (+)</span>
-                  <span class="muted" style="margin-left: 4px;">&mdash; "Does it fit existing lifestyle habits and values?"</span>
-                </div>
-                <div class="flex-row" style="gap: 8px;">
-                  <input type="range" id="attr-comp" min="1" max="10" value="7" oninput="updateSCurve()" style="width:120px;" />
-                  <span id="val-comp" class="mono bold" style="width:18px; text-align:right;">7</span>
-                </div>
+            <div class="flex-between">
+              <label for="attr-comp" class="tooltip-wrap" tabindex="0">
+                <span class="semibold" style="color:var(--primary);">2. Compatibility (+)</span>
+                <svg class="icon-svg" style="width:13px;height:13px;opacity:0.75;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span class="tooltip-box">
+                  <strong>"Does it fit my existing habits, values, and workflows without retraining?"</strong><br/>
+                  Products that require zero lifestyle changes diffuse rapidly.<br/>
+                  <em>Examples:</em> Contactless cards fit tapping a wallet; hybrid cars use existing petrol stations.
+                </span>
+              </label>
+              <div class="flex-row" style="gap:8px;">
+                <input type="range" id="attr-comp" min="1" max="10" value="7" oninput="updateSCurve()" style="width:150px;" />
+                <span id="val-comp" class="mono bold" style="width:18px;text-align:right;">7</span>
               </div>
-              <div class="muted text-xs" style="margin-top: 2px;">e.g. Contactless payments fit tapping a physical card; hybrid cars use existing petrol station networks.</div>
             </div>
 
-            <div class="card" style="padding: 8px 12px;">
-              <div class="flex-between">
-                <div>
-                  <span class="bold" style="color:var(--rose);">3. Complexity (&ndash; Barrier)</span>
-                  <span class="muted" style="margin-left: 4px;">&mdash; "Is it confusing, difficult, or tedious to learn?"</span>
-                </div>
-                <div class="flex-row" style="gap: 8px;">
-                  <input type="range" id="attr-cplx" min="1" max="10" value="3" oninput="updateSCurve()" style="width:120px;" />
-                  <span id="val-cplx" class="mono bold" style="width:18px; text-align:right;">3</span>
-                </div>
+            <div class="flex-between">
+              <label for="attr-cplx" class="tooltip-wrap" tabindex="0">
+                <span class="semibold" style="color:var(--rose);">3. Complexity (&ndash; Inverse Barrier)</span>
+                <svg class="icon-svg" style="width:13px;height:13px;opacity:0.75;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span class="tooltip-box">
+                  <strong>"Is it confusing, intimidating, or difficult to learn and set up?"</strong><br/>
+                  The only negative attribute: high complexity stalls adoption; simple 1-click UX accelerates it.<br/>
+                  <em>Examples:</em> Command-line Linux or crypto seed phrases vs. consumer iPad UX.
+                </span>
+              </label>
+              <div class="flex-row" style="gap:8px;">
+                <input type="range" id="attr-cplx" min="1" max="10" value="3" oninput="updateSCurve()" style="width:150px;" />
+                <span id="val-cplx" class="mono bold" style="width:18px;text-align:right;">3</span>
               </div>
-              <div class="muted text-xs" style="margin-top: 2px;">The only negative attribute: high complexity causes user anxiety and stalls takeoff; simple UX accelerates it.</div>
             </div>
 
-            <div class="card" style="padding: 8px 12px;">
-              <div class="flex-between">
-                <div>
-                  <span class="bold" style="color:var(--amber);">4. Trialability (+)</span>
-                  <span class="muted" style="margin-left: 4px;">&mdash; "Can potential adopters test it risk-free first?"</span>
-                </div>
-                <div class="flex-row" style="gap: 8px;">
-                  <input type="range" id="attr-trial" min="1" max="10" value="7" oninput="updateSCurve()" style="width:120px;" />
-                  <span id="val-trial" class="mono bold" style="width:18px; text-align:right;">7</span>
-                </div>
+            <div class="flex-between">
+              <label for="attr-trial" class="tooltip-wrap" tabindex="0">
+                <span class="semibold" style="color:var(--amber);">4. Trialability (+)</span>
+                <svg class="icon-svg" style="width:13px;height:13px;opacity:0.75;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span class="tooltip-box">
+                  <strong>"Can I test it out risk-free on a small scale before committing?"</strong><br/>
+                  Lowers perceived uncertainty for risk-averse buyers.<br/>
+                  <em>Examples:</em> Freemium SaaS tiers (Spotify/Slack), 30-day free trials, car test drives.
+                </span>
+              </label>
+              <div class="flex-row" style="gap:8px;">
+                <input type="range" id="attr-trial" min="1" max="10" value="7" oninput="updateSCurve()" style="width:150px;" />
+                <span id="val-trial" class="mono bold" style="width:18px;text-align:right;">7</span>
               </div>
-              <div class="muted text-xs" style="margin-top: 2px;">e.g. Free software tiers (freemium), 30-day money-back trials, and car test-drives lower switching risk.</div>
             </div>
 
-            <div class="card" style="padding: 8px 12px;">
-              <div class="flex-between">
-                <div>
-                  <span class="bold" style="color:var(--purple);">5. Observability (+)</span>
-                  <span class="muted" style="margin-left: 4px;">&mdash; "Are the benefits clearly visible to peers in public?"</span>
-                </div>
-                <div class="flex-row" style="gap: 8px;">
-                  <input type="range" id="attr-obs" min="1" max="10" value="8" oninput="updateSCurve()" style="width:120px;" />
-                  <span id="val-obs" class="mono bold" style="width:18px; text-align:right;">8</span>
-                </div>
+            <div class="flex-between">
+              <label for="attr-obs" class="tooltip-wrap" tabindex="0">
+                <span class="semibold" style="color:var(--purple);">5. Observability (+)</span>
+                <svg class="icon-svg" style="width:13px;height:13px;opacity:0.75;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span class="tooltip-box">
+                  <strong>"Can I easily see peers using and benefiting from it in public?"</strong><br/>
+                  Visible usage triggers peer curiosity and word-of-mouth contagion.<br/>
+                  <em>Examples:</em> White Apple AirPods cords, rooftop solar panels (vs. invisible backend software).
+                </span>
+              </label>
+              <div class="flex-row" style="gap:8px;">
+                <input type="range" id="attr-obs" min="1" max="10" value="8" oninput="updateSCurve()" style="width:150px;" />
+                <span id="val-obs" class="mono bold" style="width:18px;text-align:right;">8</span>
               </div>
-              <div class="muted text-xs" style="margin-top: 2px;">e.g. White Apple AirPods cords and rooftop solar panels create instant visual social proof.</div>
             </div>
           </div>
 
-          <div class="card" style="padding: 10px; margin-top: 10px;">
-            <svg viewBox="0 0 450 115" style="width: 100%; height: auto; user-select: none;">
-              <!-- Axes -->
-              <line x1="45" y1="92" x2="435" y2="92" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
-              <line x1="45" y1="14" x2="45" y2="92" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
-              
-              <!-- Axis Labels -->
-              <text x="40" y="20" fill="currentColor" opacity="0.75" font-size="9.5" text-anchor="end">100%</text>
-              <text x="40" y="95" fill="currentColor" opacity="0.75" font-size="9.5" text-anchor="end">0%</text>
-              <text x="430" y="106" fill="currentColor" opacity="0.75" font-size="10" text-anchor="end">Time (Adoption Speed) &rarr;</text>
-              <text x="12" y="54" fill="currentColor" opacity="0.75" font-size="9" transform="rotate(-90 12 54)" text-anchor="middle">Cumulative Market %</text>
-
-              <!-- Critical Mass takeoff band ~16% -->
-              <line x1="45" y1="78" x2="435" y2="78" stroke="#f59e0b" stroke-dasharray="3,3" stroke-opacity="0.4" stroke-width="1" />
-              <text x="435" y="74" fill="#fbbf24" font-size="8.5" text-anchor="end">Takeoff Threshold (~16%)</text>
-
-              <!-- S-Curve Path -->
-              <path id="s-curve-path" d="M 45 90 C 180 90, 180 18, 420 18" fill="none" stroke="#10b981" stroke-width="3.5" />
-              
-              <!-- Critical Mass Dot & Label -->
-              <circle id="critical-mass-dot" cx="155" cy="62" r="5" fill="#f59e0b" />
-              <text id="critical-mass-label" x="165" y="66" fill="#fbbf24" font-size="10" font-weight="bold">Critical Mass (10&ndash;20%)</text>
+          <div class="card" style="padding: 8px 10px;">
+            <svg viewBox="0 0 450 100" style="width: 100%; height: auto; user-select: none;">
+              <line x1="45" y1="82" x2="435" y2="82" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
+              <line x1="45" y1="12" x2="45" y2="82" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
+              <text x="40" y="18" fill="currentColor" opacity="0.75" font-size="9.5" text-anchor="end">100%</text>
+              <text x="40" y="85" fill="currentColor" opacity="0.75" font-size="9.5" text-anchor="end">0%</text>
+              <text x="430" y="96" fill="currentColor" opacity="0.75" font-size="9.5" text-anchor="end">Time (Adoption Speed) &rarr;</text>
+              <line x1="45" y1="69" x2="435" y2="69" stroke="#f59e0b" stroke-dasharray="3,3" stroke-opacity="0.4" stroke-width="1" />
+              <text x="435" y="65" fill="#fbbf24" font-size="8.5" text-anchor="end">Takeoff (~16%)</text>
+              <path id="s-curve-path" d="M 45 80 C 180 80, 180 16, 420 16" fill="none" stroke="#10b981" stroke-width="3.2" />
+              <circle id="critical-mass-dot" cx="155" cy="55" r="5" fill="#f59e0b" />
+              <text id="critical-mass-label" x="165" y="59" fill="#fbbf24" font-size="10" font-weight="bold">Critical Mass (10&ndash;20%)</text>
             </svg>
+            <div id="scurve-dynamic-expl" class="text-xs muted" style="margin-top: 4px; padding-top: 5px; border-top: 1px solid var(--border);"></div>
           </div>
 
-          <!-- Dynamic Real-Time Diagnosis -->
-          <div id="scurve-dynamic-expl" class="card text-xs" style="border-left: 3px solid var(--primary); padding: 9px 12px; margin-top: 8px;"></div>
-
-          <div class="text-xs muted" style="margin-top: 6px;">
-            <strong>Distinction Bonus Points (Official Rubric):</strong> Cite <em>opinion leaders</em>, <em>homophilous vs. heterophilous interpersonal networks</em> (mass media creates awareness; interpersonal peers drive persuasion), <strong>re-invention</strong> (users modifying an innovation during adoption), and <strong>Debi Andrus's critique</strong> of Moore (that the chasm lacks empirical verification and can become a self-fulfilling marketing metaphor).
-          </div>
-        </div>
-      </div>
-
-      <!-- Plain-English Primer: Understanding Rogers' S-Curve in 60 Seconds -->
-      <div class="subcard text-xs space-y-sm" style="margin-top: 14px;">
-        <div class="bold text-sm" style="color: var(--primary);">Plain-English Revision Guide: How to Understand Rogers' S-Curve &amp; Diffusion</div>
-        
-        <div class="grid-3" style="gap: 12px; margin-top: 6px;">
-          <div class="card" style="padding: 12px;">
-            <div class="bold" style="color: var(--emerald); margin-bottom: 4px;">1. What the S-Curve Actually Shows</div>
-            <p class="muted">
-              The S-curve tracks <strong>cumulative market adoption</strong> over time (from 0% to 100% of potential buyers):
-              <br/><br/>
-              &bull; <strong>Slow Start (0&ndash;16%):</strong> Only venturesome Techies &amp; Visionaries adopt. Growth is slow because the tech is unproven, expensive, or misunderstood.
-              <br/>
-              &bull; <strong>Takeoff Point (10&ndash;20% Critical Mass):</strong> Once ~16% adopt, interpersonal word-of-mouth creates sufficient social proof. The curve inflects steeply upward as the mass market (Early &amp; Late Majority) rushes in.
-              <br/>
-              &bull; <strong>Plateau (80&ndash;100%):</strong> Market saturation is reached; only traditionalist Laggards remain.
-            </p>
-          </div>
-
-          <div class="card" style="padding: 12px;">
-            <div class="bold" style="color: var(--primary); margin-bottom: 4px;">2. Bell Curve vs. S-Curve</div>
-            <p class="muted">
-              Students often confuse the two diagrams on this tab:
-              <br/><br/>
-              &bull; <strong>The Bell Curve (left)</strong> is <em>non-cumulative</em>: it categorises individual people into 5 distinct psychological adopter buckets based on standard deviations from the mean (2.5%, 13.5%, 34%, 34%, 16%).
-              <br/>
-              &bull; <strong>The S-Curve (right)</strong> is the <em>running cumulative sum</em> of that bell curve over time.
-              <br/>
-              &bull; <strong>Where Moore's Chasm sits:</strong> Geoffrey Moore noticed that the jump from Early Adopters to Early Majority (at the 16% mark) is NOT smooth in high-tech &mdash; it is a hazardous gap (The Chasm) because Pragmatists refuse to buy without proven peer references.
-            </p>
-          </div>
-
-          <div class="card" style="padding: 12px;">
-            <div class="bold" style="color: var(--amber); margin-bottom: 4px;">3. Why the 5 Attributes Matter for Exams</div>
-            <p class="muted">
-              Everett Rogers discovered that <strong>49% to 87% of the variance</strong> in how quickly an innovation diffuses is explained by these 5 perceived attributes alone:
-              <br/><br/>
-              &bull; <strong>Key Exam Nuance:</strong> These are <em>perceptions in the adopter's mind</em>, not objective lab specs. A product can be technically superior, but if users perceive it as complex or incompatible with existing habits, adoption stalls!
-              <br/>
-              &bull; <strong>Channel Rule:</strong> Mass media creates broad awareness, but interpersonal peer communication (word-of-mouth) drives actual persuasion and commitment.
-            </p>
+          <div class="text-xs muted">
+            <strong>Distinction Bonus Points:</strong> Cite <em>opinion leaders</em>, <em>homophilous vs. heterophilous networks</em>, <strong>re-invention</strong>, and <strong>Debi Andrus's critique</strong> of Moore.
           </div>
         </div>
       </div>
@@ -1112,12 +1112,12 @@
       const score = rel + comp + trial + obs - (cplx * 1.3);
       const norm = Math.max(0.1, Math.min(1, (score + 5) / 38));
       const midX = Math.round(340 - norm * 210);
-      document.getElementById('s-curve-path').setAttribute('d', `M 45 90 C ${midX} 90, ${midX} 18, 420 18`);
+      document.getElementById('s-curve-path').setAttribute('d', `M 45 80 C ${midX} 80, ${midX} 16, 420 16`);
       const dotX = Math.round(45 + (midX - 45) * 0.75);
       document.getElementById('critical-mass-dot').setAttribute('cx', dotX);
-      document.getElementById('critical-mass-dot').setAttribute('cy', 62);
+      document.getElementById('critical-mass-dot').setAttribute('cy', 55);
       document.getElementById('critical-mass-label').setAttribute('x', Math.min(290, dotX + 8));
-      document.getElementById('critical-mass-label').setAttribute('y', 66);
+      document.getElementById('critical-mass-label').setAttribute('y', 59);
 
       const badge = document.getElementById('adoption-score-badge');
       const expl = document.getElementById('scurve-dynamic-expl');
@@ -1126,19 +1126,19 @@
         badge.textContent = 'Fast Viral Diffusion';
         badge.className = 'badge badge-emerald';
         if (expl) {
-          expl.innerHTML = `<strong>Adoption Profile &mdash; Rapid Viral Takeoff:</strong> Because relative advantage, compatibility, trialability, and observability are high while complexity is low, users immediately understand the benefit and encounter near-zero switching friction. The product achieves the <strong>Critical Mass tipping point (~16%) very early</strong>, causing the curve to inflect steeply upward as peer word-of-mouth takes over. <em>Real-world parallels:</em> Smartphones, WhatsApp, contactless payments.`;
+          expl.innerHTML = `<strong>Rapid Takeoff:</strong> High advantage &amp; compatibility with low complexity hit <strong>Critical Mass (~16%) early</strong>, triggering steep word-of-mouth adoption (<em>e.g. Smartphones, WhatsApp, contactless cards</em>).`;
         }
       } else if (norm > 0.4) {
-        badge.textContent = 'Moderate Steady Diffusion';
+        badge.textContent = 'Moderate Diffusion';
         badge.className = 'badge badge-amber';
         if (expl) {
-          expl.innerHTML = `<strong>Adoption Profile &mdash; Extended / Moderate Curve:</strong> The technology offers real advantages, but friction (such as noticeable complexity, moderate switching costs, or required habit changes) stretches the timeline. Reaching critical mass requires significant ongoing user education and product support. <em>Real-world parallels:</em> Electric vehicles (charging habits), cloud ERP migrations, hybrid workplace tools.`;
+          expl.innerHTML = `<strong>Gradual S-Curve:</strong> Clear benefits exist, but moderate complexity or habit changes stretch out the time needed to reach critical mass (<em>e.g. Electric vehicles, cloud ERP</em>).`;
         }
       } else {
         badge.textContent = 'Stalled in Chasm';
         badge.className = 'badge badge-rose';
         if (expl) {
-          expl.innerHTML = `<strong>Adoption Profile &mdash; Flattened / Delayed Takeoff:</strong> High complexity combined with low compatibility or low trialability creates immense hesitation. Potential buyers fear switching or find the tool too hard to use. The innovation fails to reach the ~16% critical mass needed for peer contagion and risks stalling in the chasm. <em>Real-world parallels:</em> Early consumer VR headsets, desktop Linux, complex enterprise software without onboarding.`;
+          expl.innerHTML = `<strong>Delayed / Stalled:</strong> High complexity and low compatibility/trialability prevent the product from reaching the ~16% critical mass tipping point (<em>e.g. Early VR headsets, desktop Linux</em>).`;
         }
       }
     }
