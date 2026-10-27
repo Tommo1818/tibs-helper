@@ -27,8 +27,9 @@ This revision hub provides interactive SVG visualisations, academic theory synth
   * *Intellectual Property:* Patents (Utilitarian bargain, *software as such* vs. technical effect, Brin & Page paper vs. US6285999B1, Heller & Eisenberg's Tragedy of the Anticommons), Copyright (idea-expression dichotomy, *Temple Island v New English Teas [2012]* Red Bus case, *Google v. Oracle*), Trade Secrets (*Faccenda Chicken [1986]*, *Vestergaard [2013]*), and an interactive Start-Up IP Audit sorter (Seminar Slide 8).
   * *Open Source Governance:* Eric Raymond's *Cathedral and the Bazaar* (Linus's Law) vs. Nadia Eghbal's *Working in Public* (Federation vs. Stadium topologies; *Heartbleed*, *Log4j*, and *XZ Utils* crises), plus Permissive (MIT/Apache 2.0) vs. Copyleft (GPL) and Creative Commons (`CC BY-NC`) licensing.
   * *Data Protection & AI Regulation:* UK GDPR Art. 5 principles, the Data (Use and Access) Act 2025 (DUAA) mandatory safeguards for solely automated decisions on ordinary personal data, the EU AI Act (Regulation 2024/1689) 4 Risk Tiers & Provider vs. Deployer duties, and the Teichmann vs. Martin Ebers (2024) proportionality debate applied to all three seminar scenarios (Retailer Account Closure, EU Road Traffic AI, and University Admissions AI).
-* **Mock Exams & Active Recall Deck:**
-  * All 6 official seminar and mock exam prompts with an auto-saving practice pad, self-timer, 12-card active recall flashcard deck, and interactive Level 7 marking rubric checklists.
+* **Mock Exams, Past Paper & Active Recall Deck:**
+  * Explicit **Essential vs. Recommended / Optional** reading breakdowns across Themes 1–4 (where only Essential materials are mandatory to learn for the exam).
+  * The official **Sample Past Year Paper Question & Marking Guide** on Carlota Perez's 5 Technological Revolutions and Financial Phases (20 points) plus all 6 official seminar and mock exam prompts with an auto-saving practice pad, self-timer, 12-card active recall flashcard deck, and interactive Level 7 marking rubric checklists.
 
 ---
 
