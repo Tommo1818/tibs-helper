@@ -949,66 +949,64 @@
     <!-- EU AI Act & DUAA 2025 -->
     <div class="card space-y">
       <h3>3. EU AI Act (Regulation 2024/1689), UK GDPR / DUAA 2025 &amp; Seminar Case Studies (Slides 9, 10 &amp; 13)</h3>
-      <div class="grid-2">
+      <div class="grid-2" style="align-items: start;">
+        <!-- LEFT COLUMN: PURE EU AI ACT RISK PYRAMID -->
         <div class="subcard space-y-sm">
           <div class="flex-between">
             <span class="tooltip-wrap text-xs bold uppercase muted" tabindex="0">
-              <span>Interactive EU AI Act Risk Pyramid (Click Any Layer)</span>
+              <span>A. EU AI Act Risk-Based Pyramid (Click Any Layer 1&ndash;4)</span>
               <svg class="icon-svg" style="width:14px;height:14px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
               <span class="tooltip-box" style="width:330px;">
-                <strong>What Does the Risk Pyramid Convey?</strong><br/>
-                &bull; <strong>Risk-Based Regulation:</strong> The EU AI Act does NOT regulate "AI" as a single technology; it regulates <em>specific use cases</em> based on how much harm they could cause.<br/>
-                &bull; <strong>Why a Pyramid Shape?</strong> Only a tiny fraction of AI systems sit at the top (Banned or High-Risk), while the vast majority of everyday AI sits at the wide bottom with light or zero rules.
+                <strong>Why is the EU AI Act Shaped Like a Pyramid?</strong><br/>
+                &bull; Instead of regulating "AI" as one single technology, the EU regulates <em>specific use cases</em> based on how much harm they could cause.<br/>
+                &bull; The narrow top (Layers 1 &amp; 2) covers a tiny fraction of high-stakes AI with bans or strict pre-launch audits, while the wide base (Layer 4) leaves 90%+ of everyday AI free of red tape.
               </span>
             </span>
-            <span class="badge badge-primary">Click Pyramid Tiers 1&ndash;4</span>
+            <span id="pyr-active-badge" class="badge badge-amber">Layer 2 Selected</span>
           </div>
 
           <p class="text-xs muted">
-            <strong>Core Idea:</strong> Higher risk of harm (top) = stricter legal controls; lower risk (bottom) = lighter rules. Click any of the <strong>4 pyramid layers</strong> (or the <strong>3 cross-cutting legal pillars</strong> below) to inspect its rules:
+            <strong>Click any layer of the pyramid below</strong> to see what is in that risk tier and what rules apply (no mismatched buttons &mdash; each pyramid slice opens its own exact card):
           </p>
 
-          <svg viewBox="0 0 520 150" style="width: 100%; height: auto; user-select: none;">
-            <polygon id="pyr-poly-tier1" points="260,8 350,42 170,42" fill="#f43f5e" fill-opacity="0.35" stroke="#f43f5e" stroke-width="1.5" style="cursor:pointer" onclick="selectLegalTopic('tier1')" />
-            <text x="260" y="34" fill="#fb7185" font-size="9.5" font-weight="bold" text-anchor="middle" style="cursor:pointer" onclick="selectLegalTopic('tier1')">1. UNACCEPTABLE / BANNED (Art. 5)</text>
+          <svg viewBox="0 0 520 155" style="width: 100%; height: auto; user-select: none;">
+            <g style="cursor:pointer" onclick="selectPyramidTier('tier1')">
+              <polygon id="pyr-poly-tier1" points="260,6 352,42 168,42" fill="#f43f5e" fill-opacity="0.28" stroke="#f43f5e" stroke-width="1.5" />
+              <text x="260" y="32" fill="#fb7185" font-size="9.5" font-weight="bold" text-anchor="middle">1. UNACCEPTABLE RISK (Art. 5 &mdash; Banned)</text>
+            </g>
 
-            <polygon id="pyr-poly-tier2" points="166,46 354,46 400,80 120,80" fill="#f59e0b" fill-opacity="0.32" stroke="#f59e0b" stroke-width="1.5" style="cursor:pointer" onclick="selectLegalTopic('tier2')" />
-            <text x="260" y="67" fill="#fbbf24" font-size="10.5" font-weight="bold" text-anchor="middle" style="cursor:pointer" onclick="selectLegalTopic('tier2')">2. HIGH-RISK (Art. 6 &amp; Annex III: Admissions / Traffic)</text>
+            <g style="cursor:pointer" onclick="selectPyramidTier('tier2')">
+              <polygon id="pyr-poly-tier2" points="164,46 356,46 402,81 118,81" fill="#f59e0b" fill-opacity="0.55" stroke="#f59e0b" stroke-width="3" />
+              <text x="260" y="68" fill="#fbbf24" font-size="10.2" font-weight="bold" text-anchor="middle">2. HIGH-RISK AI (Art. 6 &amp; Annex III: Traffic / Admissions)</text>
+            </g>
 
-            <polygon id="pyr-poly-tier3" points="116,84 404,84 450,114 70,114" fill="#8b5cf6" fill-opacity="0.28" stroke="#8b5cf6" stroke-width="1.5" style="cursor:pointer" onclick="selectLegalTopic('tier3')" />
-            <text x="260" y="103" fill="#a78bfa" font-size="10" font-weight="bold" text-anchor="middle" style="cursor:pointer" onclick="selectLegalTopic('tier3')">3. GPAI &amp; TRANSPARENCY (Arts. 50&ndash;55: Chatbots / LLMs)</text>
+            <g style="cursor:pointer" onclick="selectPyramidTier('tier3')">
+              <polygon id="pyr-poly-tier3" points="114,85 406,85 452,116 68,116" fill="#8b5cf6" fill-opacity="0.28" stroke="#8b5cf6" stroke-width="1.5" />
+              <text x="260" y="105" fill="#a78bfa" font-size="10" font-weight="bold" text-anchor="middle">3. GPAI &amp; TRANSPARENCY (Arts. 50&ndash;55: Chatbots / LLMs)</text>
+            </g>
 
-            <polygon id="pyr-poly-tier4" points="66,118 454,118 500,145 20,145" fill="#10b981" fill-opacity="0.25" stroke="#10b981" stroke-width="1.5" style="cursor:pointer" onclick="selectLegalTopic('tier4')" />
-            <text x="260" y="135" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle" style="cursor:pointer" onclick="selectLegalTopic('tier4')">4. MINIMAL RISK (Spam Filters / Games &mdash; No Mandatory Rules)</text>
+            <g style="cursor:pointer" onclick="selectPyramidTier('tier4')">
+              <polygon id="pyr-poly-tier4" points="64,120 456,120 502,148 18,148" fill="#10b981" fill-opacity="0.28" stroke="#10b981" stroke-width="1.5" />
+              <text x="260" y="138" fill="#34d399" font-size="10" font-weight="bold" text-anchor="middle">4. MINIMAL RISK (Spam Filters / Games &mdash; No Mandatory Rules)</text>
+            </g>
           </svg>
 
-          <div class="text-xs bold uppercase muted" style="margin-top: 6px;">A. Pyramid Risk Tiers (Matches Layers 1&ndash;4 Above):</div>
-          <div class="grid-4" style="gap: 6px;">
-            <button onclick="selectLegalTopic('tier1')" id="legbtn-tier1" class="btn-primary" style="padding:6px 8px; font-size:0.75rem; justify-content:center;">1. Unacceptable</button>
-            <button onclick="selectLegalTopic('tier2')" id="legbtn-tier2" style="padding:6px 8px; font-size:0.75rem; justify-content:center;">2. High-Risk</button>
-            <button onclick="selectLegalTopic('tier3')" id="legbtn-tier3" style="padding:6px 8px; font-size:0.75rem; justify-content:center;">3. GPAI / Transp.</button>
-            <button onclick="selectLegalTopic('tier4')" id="legbtn-tier4" style="padding:6px 8px; font-size:0.75rem; justify-content:center;">4. Minimal Risk</button>
-          </div>
-
-          <div class="text-xs bold uppercase muted" style="margin-top: 8px;">B. Cross-Cutting Exam Pillars (Supply Chain, UK DUAA &amp; Proportionality):</div>
-          <div class="grid-3" style="gap: 6px;">
-            <button onclick="selectLegalTopic('roles')" id="legbtn-roles" style="padding:6px 8px; font-size:0.75rem; justify-content:center;">Provider vs. Deployer</button>
-            <button onclick="selectLegalTopic('duaa')" id="legbtn-duaa" style="padding:6px 8px; font-size:0.75rem; justify-content:center;">UK GDPR &amp; DUAA 2025</button>
-            <button onclick="selectLegalTopic('proport')" id="legbtn-proport" style="padding:6px 8px; font-size:0.75rem; justify-content:center;">Teichmann vs. Ebers</button>
-          </div>
-
-          <div id="legal-detail-box" class="card text-xs space-y-sm" style="margin-top: 10px;"></div>
+          <div id="pyramid-detail-box" class="card text-xs space-y-sm" style="margin-top: 8px;"></div>
         </div>
 
-        <div class="subcard text-xs space-y-sm">
-          <div class="bold text-sm">Applied Seminar Scenarios (Slides 9, 10 &amp; 13)</div>
-          <ul class="clean-list">
-            <li><strong>UK GDPR Art. 5 Seven Principles:</strong> (1) Lawfulness, fairness &amp; transparency; (2) Purpose limitation; (3) Data minimisation; (4) Accuracy; (5) Storage limitation; (6) Integrity &amp; confidentiality; (7) Accountability.</li>
-            <li><strong>Slide 9 Case (UK Online Retailer Fraud Model):</strong> Retailer repurposes shopping history to automatically close customer accounts for suspected refund abuse, with a staff member briefly clicking "approve".
-              <br/><em>Legal Diagnosis:</em> Repurposing data triggers <strong>purpose limitation &amp; transparency</strong> checks. A staff member rubber-stamping outputs without investigating evidence does <strong>not</strong> make the decision human &mdash; it remains a <strong>solely automated decision with significant effect</strong> under UK DUAA 2025, requiring proactive notice, customer representations, and genuine human intervention (tested via override rates, review duration logs, and blind seeded test cases).</li>
-            <li><strong>Slide 10 Case (EU Road Authority AI Traffic-Signal Controller):</strong> An EU road authority deploys an AI system controlling traffic signals on a busy urban corridor.
-              <br/><em>Legal Diagnosis:</em> Classified as <strong>High-Risk AI under Annex III Point 2 (Critical Infrastructure: road traffic management safety components)</strong>. Under <strong>Teichmann</strong>, severe physical residual harm to pedestrians demands strict ex-ante fault-tree testing and manual fail-safe overrides. Under <strong>Ebers (2024)</strong>, regulators must also weigh congestion/emission reductions and allow phased shadow-mode trials rather than blocking deployment indefinitely.</li>
-          </ul>
+        <!-- RIGHT COLUMN: SEPARATE CROSS-CUTTING LEGAL FRAMEWORKS & SEMINAR CASES -->
+        <div class="subcard space-y-sm">
+          <div class="text-xs bold uppercase muted">B. Key Exam Frameworks &amp; Seminar Case Studies (Separate from Pyramid Tiers)</div>
+          <p class="text-xs muted">
+            In the exam, once you classify an AI system using the pyramid on the left, you must also analyse <strong>who is responsible</strong>, how <strong>UK data law (DUAA 2025)</strong> differs from EU law, and whether controls are <strong>proportionate</strong>:
+          </p>
+          <div class="grid-2" style="gap: 6px;">
+            <button onclick="selectLegalPillar('roles')" id="pilbtn-roles" class="btn-primary" style="justify-content:center;">1. Provider vs. Deployer Duties</button>
+            <button onclick="selectLegalPillar('duaa')" id="pilbtn-duaa" style="justify-content:center;">2. UK GDPR &amp; DUAA 2025</button>
+            <button onclick="selectLegalPillar('proport')" id="pilbtn-proport" style="justify-content:center;">3. Teichmann vs. Ebers (2024)</button>
+            <button onclick="selectLegalPillar('cases')" id="pilbtn-cases" style="justify-content:center;">4. Seminar Cases (Slides 9 &amp; 10)</button>
+          </div>
+          <div id="pillar-detail-box" class="card text-xs space-y-sm" style="margin-top: 8px;"></div>
         </div>
       </div>
     </div>
@@ -1365,9 +1363,12 @@
       renderIpAudit();
     }
 
-    const LEGAL_TOPICS = {
+    const PYRAMID_TIERS = {
       tier1: {
-        title: 'Pyramid Layer 1: Unacceptable Risk (Article 5 — BANNED IN THE EU)',
+        badge: 'Layer 1 Selected',
+        badgeClass: 'badge badge-rose',
+        color: 'var(--rose)',
+        title: '1. UNACCEPTABLE RISK (Article 5 — Banned in the EU)',
         html: `
           <ul class="clean-list">
             <li><strong>What It Means:</strong> AI uses that pose an unacceptable threat to fundamental human rights or safety are <strong>completely prohibited</strong> from being placed on the EU market.</li>
@@ -1382,21 +1383,26 @@
         `
       },
       tier2: {
-        title: 'Pyramid Layer 2: High-Risk AI Systems (Article 6 & Annex III — STRICT EX-ANTE RULES)',
+        badge: 'Layer 2 Selected',
+        badgeClass: 'badge badge-amber',
+        color: 'var(--amber)',
+        title: '2. HIGH-RISK AI (Article 6 & Annex III — Traffic / Admissions)',
         html: `
           <ul class="clean-list">
-            <li><strong>What It Means:</strong> Allowed on the market <strong>ONLY</strong> if they pass strict pre-deployment (ex-ante) conformity assessments, bias testing, logging, and human oversight requirements.</li>
+            <li><strong>What It Means:</strong> Allowed on the market <strong>ONLY</strong> if they pass strict pre-deployment (ex-ante) conformity assessments, bias testing, automatic logging, and human oversight requirements.</li>
             <li><strong>Extraterritorial Scope (Art. 2):</strong> Applies to non-EU suppliers (e.g. a <em>UK vendor</em>) whenever their AI system is sold into the EU or its output is used in the EU.</li>
             <li><strong>Key Annex III High-Risk Sectors Tested in TIBS:</strong>
               <br/>&bull; <strong>Annex III Point 2 (Critical Infrastructure):</strong> AI safety components in <em>road traffic management</em> (Seminar Slide 10 case), water, gas, and electricity grids.
               <br/>&bull; <strong>Annex III Point 3 (Education &amp; Vocational Training):</strong> AI systems used for <em>university admissions ranking</em> (Seminar Slide 13 mock question) or evaluating learning outcomes.
               <br/>&bull; <strong>Other Annex III Sectors:</strong> CV/recruitment screening (Point 4), credit scoring &amp; health/life insurance (Point 5), law enforcement &amp; migration/border control.</li>
-            <li><em>Tip: Click <strong>"Provider vs. Deployer"</strong> above to see how legal duties split between the UK software vendor and the EU university/road authority.</em></li>
           </ul>
         `
       },
       tier3: {
-        title: 'Pyramid Layer 3: General Purpose AI (GPAI) & Transparency Tier (Articles 50–55)',
+        badge: 'Layer 3 Selected',
+        badgeClass: 'badge badge-purple',
+        color: 'var(--purple)',
+        title: '3. GPAI & TRANSPARENCY (Articles 50–55 — Chatbots / LLMs)',
         html: `
           <ul class="clean-list">
             <li><strong>What It Means:</strong> Foundation models (LLMs) and user-facing generative tools that are not high-risk by default, but carry <strong>mandatory transparency and disclosure obligations</strong> so humans are not deceived.</li>
@@ -1410,7 +1416,10 @@
         `
       },
       tier4: {
-        title: 'Pyramid Layer 4: Minimal Risk AI (Vast Majority of AI Systems — No New Mandatory Rules)',
+        badge: 'Layer 4 Selected',
+        badgeClass: 'badge badge-emerald',
+        color: 'var(--emerald)',
+        title: '4. MINIMAL RISK (Spam Filters / Games — No Mandatory Rules)',
         html: `
           <ul class="clean-list">
             <li><strong>What It Means:</strong> Everyday AI applications that pose little or no risk to citizens’ rights or safety face <strong>zero mandatory obligations</strong> under the EU AI Act (providers may voluntarily adopt codes of conduct under Art. 95).</li>
@@ -1418,9 +1427,12 @@
             <li><strong>Why This Layer Matters in Essays:</strong> Demonstrates the <strong>proportionality principle</strong> of the risk pyramid — instead of suffocating all software engineering with blanket red tape, the EU AI Act concentrates heavy compliance at the top of the pyramid (Layers 1 &amp; 2) while leaving Layer 4 free to innovate.</li>
           </ul>
         `
-      },
+      }
+    };
+
+    const LEGAL_PILLARS = {
       roles: {
-        title: 'Cross-Cutting Pillar 1: Provider (UK Supplier) vs. Deployer (EU University / Road Authority)',
+        title: '1. Provider (UK Supplier) vs. Deployer (EU University / Road Authority)',
         html: `
           <ul class="clean-list">
             <li><strong>Provider Duties (Developer/Supplier placing High-Risk AI on the EU market — Art. 16):</strong> Continuous risk management system (Art. 9), training/validation/test data governance &amp; bias examination (Art. 10), technical documentation (Art. 11), automatic event logging capability (Art. 12), transparent instructions &amp; human-oversight interface design (Arts. 13&ndash;14), accuracy/robustness/cybersecurity (Art. 15), conformity assessment, CE marking, and appointing an EU Authorised Representative.</li>
@@ -1429,9 +1441,10 @@
         `
       },
       duaa: {
-        title: 'Cross-Cutting Pillar 2: UK GDPR & The Data (Use and Access) Act 2025 (DUAA)',
+        title: '2. UK GDPR & The Data (Use and Access) Act 2025 (DUAA)',
         html: `
           <ul class="clean-list">
+            <li><strong>UK GDPR Art. 5 Seven Principles:</strong> (1) Lawfulness, fairness &amp; transparency; (2) Purpose limitation; (3) Data minimisation; (4) Accuracy; (5) Storage limitation; (6) Integrity &amp; confidentiality; (7) Accountability.</li>
             <li><strong>Statutory Relationship:</strong> The DUAA 2025 amends the <em>UK GDPR</em> and Data Protection Act 2018 (it does not replace the UK GDPR, and does not alter the EU GDPR).</li>
             <li><strong>Relaxed Threshold for Ordinary Personal Data + Mandatory Safeguards:</strong> Under DUAA 2025, significant solely automated decisions (such as automatically rejecting a university applicant or closing a customer’s retail account) based on <em>non-special category (ordinary) personal data</em> are permitted under any valid lawful basis (e.g. legitimate interests), <strong>PROVIDED the controller implements four mandatory safeguards:</strong>
               <br/>1. <em>Proactive Information:</em> Notify the data subject that a significant solely automated decision has been taken.
@@ -1442,33 +1455,59 @@
         `
       },
       proport: {
-        title: 'Cross-Cutting Pillar 3: Proportionality Debate — Teichmann vs. Martin Ebers (2024)',
+        title: '3. Proportionality Debate: Teichmann vs. Martin Ebers (2024)',
         html: `
           <ul class="clean-list">
             <li><strong>Teichmann (Ex-Ante Precaution &amp; Residual Harm Control):</strong> Focuses on how ex-ante regulatory controls must scale with the severity and irreversibility of foreseeable <strong>residual harm</strong> (e.g. physical injury in urban traffic control or wrongful denial of higher education). Where an AI system remains an opaque black box with unquantified subgroup bias, strict ex-ante gates and human-in-the-loop overrides are essential.</li>
             <li><strong>Martin Ebers (2024, <em>Truly Risk-Based Regulation of AI</em>):</strong> Critiques the EU AI Act’s static, list-based Annex III classification for treating all applications in a sector as uniformly high-risk without weighing <strong>the societal benefits of AI, compliance costs for SMEs, and the opportunity cost of delaying or not using AI</strong> (e.g. noisy, fatigued human admissions markers or congested, high-emission urban roads). Advocates dynamic, context-specific proportionality (such as shadow-mode trials and tiered triage).</li>
           </ul>
         `
+      },
+      cases: {
+        title: '4. Applied Seminar Case Studies (Slides 9, 10 & 13)',
+        html: `
+          <ul class="clean-list">
+            <li><strong>Slide 9 Case (UK Online Retailer Fraud Model):</strong> Retailer repurposes shopping history to automatically close customer accounts for suspected refund abuse, with a staff member briefly clicking "approve".
+              <br/><em>Diagnosis:</em> Repurposing data triggers <strong>purpose limitation &amp; transparency</strong> checks. A staff member rubber-stamping outputs without investigating evidence does <strong>not</strong> make the decision human &mdash; it remains a <strong>solely automated decision with significant effect</strong> under UK DUAA 2025, requiring proactive notice, customer representations, and genuine human intervention (tested via override rates, review duration logs, and blind seeded test cases).</li>
+            <li><strong>Slide 10 Case (EU Road Authority AI Traffic-Signal Controller):</strong> An EU road authority deploys an AI system controlling traffic signals on a busy urban corridor.
+              <br/><em>Diagnosis:</em> Classified as <strong>High-Risk AI under Annex III Point 2 (Critical Infrastructure: road traffic management safety components)</strong>. Under <strong>Teichmann</strong>, severe physical residual harm to pedestrians demands strict ex-ante fault-tree testing and manual fail-safe overrides. Under <strong>Ebers (2024)</strong>, regulators must also weigh congestion/emission reductions and allow phased shadow-mode trials rather than blocking deployment indefinitely.</li>
+          </ul>
+        `
       }
     };
 
-    function selectLegalTopic(key) {
-      ['tier1', 'tier2', 'tier3', 'tier4', 'roles', 'duaa', 'proport'].forEach(k => {
-        const b = document.getElementById('legbtn-' + k);
+    function selectPyramidTier(key) {
+      ['tier1', 'tier2', 'tier3', 'tier4'].forEach(k => {
+        const poly = document.getElementById('pyr-poly-' + k);
+        if (poly) {
+          poly.setAttribute('stroke-width', k === key ? '3' : '1.5');
+          poly.setAttribute('fill-opacity', k === key ? '0.58' : '0.25');
+        }
+      });
+      const t = PYRAMID_TIERS[key];
+      const badge = document.getElementById('pyr-active-badge');
+      if (badge) {
+        badge.textContent = t.badge;
+        badge.className = t.badgeClass;
+      }
+      document.getElementById('pyramid-detail-box').innerHTML = `
+        <div class="bold text-sm" style="color:${t.color};">${t.title}</div>
+        ${t.html}
+      `;
+    }
+
+    function selectLegalPillar(key) {
+      ['roles', 'duaa', 'proport', 'cases'].forEach(k => {
+        const b = document.getElementById('pilbtn-' + k);
         if (b) {
           if (k === key) b.classList.add('btn-primary');
           else b.classList.remove('btn-primary');
         }
-        const poly = document.getElementById('pyr-poly-' + k);
-        if (poly) {
-          poly.setAttribute('stroke-width', k === key ? '3' : '1.5');
-          poly.setAttribute('fill-opacity', k === key ? '0.55' : '0.28');
-        }
       });
-      const t = LEGAL_TOPICS[key];
-      document.getElementById('legal-detail-box').innerHTML = `
-        <div class="bold text-sm" style="color:var(--primary);">${t.title}</div>
-        ${t.html}
+      const p = LEGAL_PILLARS[key];
+      document.getElementById('pillar-detail-box').innerHTML = `
+        <div class="bold text-sm" style="color:var(--primary);">${p.title}</div>
+        ${p.html}
       `;
     }
 
@@ -1781,7 +1820,8 @@
     updateSCurve();
     renderBankSorter();
     renderIpAudit();
-    selectLegalTopic('tier2');
+    selectPyramidTier('tier2');
+    selectLegalPillar('roles');
     selectMockQuestion('past');
   </script>
 </body>
